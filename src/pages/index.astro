@@ -1,16 +1,19 @@
 ---
 import '../styles/global.css';
 import IntegrationDemo from '../components/IntegrationDemo.vue';
-import { siPhp, siSymfony, siLaravel, siVuedotjs, siRabbitmq, siPostgresql, siDocker } from 'simple-icons';
+import Hex from '../components/Hex.astro';
+import { siPhp, siSymfony, siLaravel, siVuedotjs, siRabbitmq, siPostgresql, siDocker, siGit, siJavascript, siMysql, siLinux, siNginx, siPython } from 'simple-icons';
 
 const email = 'canetarn05@gmail.com';
 const cv = '/CV_Arnau_Canet.pdf';
 const linkedin = 'https://www.linkedin.com/in/arnau-canet';
 const github = 'https://github.com/arnaucanet';
 
-const stackIcons = [
-  ['PHP', siPhp], ['Symfony', siSymfony], ['Laravel', siLaravel], ['Vue.js', siVuedotjs],
-  ['RabbitMQ', siRabbitmq], ['PostgreSQL', siPostgresql], ['Docker', siDocker],
+const stack = [
+  { group: 'Backend', items: [['PHP', siPhp], ['Symfony', siSymfony], ['Laravel', siLaravel], ['RabbitMQ', siRabbitmq], ['APIs REST'], ['DDD hexagonal'], ['Tests unitarios']] },
+  { group: 'IA y datos', items: [['Integración de LLMs'], ['PostgreSQL', siPostgresql], ['MySQL', siMysql], ['Python (en formación)', siPython]] },
+  { group: 'Frontend', items: [['JavaScript', siJavascript], ['Vue.js', siVuedotjs], ['HTML y CSS'], ['Twig']] },
+  { group: 'DevOps y sistemas', items: [['Docker', siDocker], ['Git', siGit], ['Linux', siLinux], ['Nginx', siNginx], ['Redes']] },
 ];
 
 const work = [
@@ -34,8 +37,6 @@ const education = [
 
 const title = 'Arnau Canet Català · Backend & AI Integration Developer';
 const description = 'Desarrollador backend en PHP y Symfony que integra productos de inteligencia artificial en plataformas empresariales.';
-const btnLight = 'inline-flex items-center gap-2 rounded-md bg-ink px-5 py-3 font-medium text-bg transition-colors hover:bg-white';
-const btnOutline = 'inline-flex items-center gap-2 rounded-md border border-white/15 px-5 py-3 font-medium transition-colors hover:border-white/35 hover:bg-white/5';
 ---
 <!doctype html>
 <html lang="es">
@@ -54,15 +55,18 @@ const btnOutline = 'inline-flex items-center gap-2 rounded-md border border-whit
   <body class="min-h-screen bg-bg text-ink">
     <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-3 focus:py-2 focus:text-bg">Saltar al contenido</a>
 
-    <header class="sticky top-0 z-40 border-b border-white/[0.06] bg-bg/80 backdrop-blur-md">
+    <header class="sticky top-0 z-40 border-b border-white/[0.06] bg-bg/85 backdrop-blur-md">
       <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a href="/" class="font-bold tracking-tight">Arnau Canet Català</a>
+        <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight">
+          <Hex size={22} filled class="text-accent" />
+          Arnau Canet
+        </a>
         <nav class="flex items-center gap-1 text-sm sm:gap-2">
           <a class="hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#trabajo">Trabajo</a>
           <a class="hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#sobre-mi">Sobre mí</a>
           <a class="hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#contacto">Contacto</a>
-          <a href={cv} target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 rounded-md border border-white/15 px-4 py-2 font-semibold hover:border-white/35 hover:bg-white/5">
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+          <a href={cv} target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 font-semibold text-on-accent hover:brightness-110">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
             CV
           </a>
         </nav>
@@ -70,37 +74,34 @@ const btnOutline = 'inline-flex items-center gap-2 rounded-md border border-whit
     </header>
 
     <main id="contenido">
-      <section class="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col justify-center px-5 py-20 sm:px-8">
-        <div class="mx-auto w-full max-w-[46rem]">
-          <p class="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-3 py-1.5 text-[13px] text-ink/85">
-            <span class="status-dot h-2 w-2 rounded-full bg-accent"></span>
-            Disponible para nuevos puestos <span class="text-muted">·</span> Barcelona
-          </p>
-          <h1 class="mt-7 text-[2.6rem] font-bold leading-[1.08] tracking-[-0.03em] sm:text-[4.1rem]">
-            Integrando IA en
-            <span class="glow block text-accent">productos reales.</span>
-          </h1>
-          <p class="mt-7 max-w-[36rem] text-lg leading-relaxed text-muted sm:text-xl sm:leading-relaxed">
-            Desarrollador backend en PHP y Symfony. En itbid integré en la plataforma, en solitario,
-            dos productos basados en LLM: un validador de documentos y un chatbot interno.
-          </p>
-          <div class="mt-10 flex flex-wrap gap-4">
-            <a href="#trabajo" class={btnLight}>
-              Ver mi trabajo
-              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-            </a>
-            <a href="#contacto" class={btnOutline}>Hablemos</a>
+      <section class="relative">
+        <div class="grid-bg pointer-events-none absolute inset-0" aria-hidden="true"></div>
+        <div class="relative mx-auto grid min-h-[calc(100svh-4rem)] max-w-6xl items-center gap-14 px-5 pb-28 pt-16 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+          <div>
+            <p class="flex items-center gap-2 text-muted">
+              <Hex size={14} class="text-accent" />
+              Arnau Canet Català, Backend & AI Integration Developer
+            </p>
+            <h1 class="mt-6 text-[2.75rem] font-extrabold leading-[1.0] tracking-[-0.035em] sm:text-[4.4rem]">
+              Hago que la IA funcione dentro del producto.
+            </h1>
+            <p class="mt-7 max-w-[32rem] text-lg leading-relaxed text-muted">
+              Trabajo con PHP y Symfony. En itbid integré en la plataforma, en solitario,
+              dos productos basados en LLM: un validador de documentos y un chatbot interno.
+            </p>
+            <div class="mt-9 flex flex-wrap items-center gap-4">
+              <a href="#trabajo" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-bg hover:bg-white">Ver mi trabajo</a>
+              <a href="#contacto" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold hover:border-white/35 hover:bg-white/5">Hablemos</a>
+            </div>
+            <p class="mt-10 flex items-center gap-2.5 text-sm text-muted">
+              <span class="status-dot h-2 w-2 rounded-full bg-accent"></span>
+              Disponible ahora en la zona de Barcelona
+            </p>
           </div>
-
-          <p class="mt-14 font-mono text-xs uppercase tracking-[0.08em] text-muted">Stack principal:</p>
-          <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-3 font-mono text-sm text-ink/80">
-            {stackIcons.map(([name, icon]) => (
-              <li class="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current opacity-80" aria-hidden="true"><path d={icon.path} /></svg>
-                {name}
-              </li>
-            ))}
-          </ul>
+          <div>
+            <IntegrationDemo client:idle />
+            <p class="mt-3 text-sm text-muted">Así viaja una petición en cada producto. Mi parte: la plataforma.</p>
+          </div>
         </div>
         <a href="#trabajo" aria-label="Ir a mi trabajo" class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-muted hover:text-ink">
           <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
@@ -109,85 +110,101 @@ const btnOutline = 'inline-flex items-center gap-2 rounded-md border border-whit
 
       <section id="trabajo" class="border-t border-line">
         <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-          <div class="mx-auto max-w-[46rem] lg:max-w-none">
-            <p class="font-mono text-xs uppercase tracking-[0.08em] text-accent">Trabajo seleccionado</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-[-0.02em] sm:text-4xl">IA integrada en itbid</h2>
-            <p class="mt-5 max-w-[42rem] text-lg leading-relaxed text-muted">
-              itbid es una plataforma de compras para empresas. Los microservicios de IA los desarrollaba un compañero;
-              mi trabajo era que funcionaran dentro del producto, y esa parte la llevé yo solo de principio a fin.
-            </p>
-
-            <div class="mt-12 grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
-              <div>
-                <IntegrationDemo client:idle />
-                <p class="mt-3 text-sm text-muted">Así viaja una petición en cada producto.</p>
-              </div>
-              <div class="space-y-4">
+          <div class="grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-16">
+            <div>
+              <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Mi trabajo en itbid</h2>
+              <p class="mt-2 text-muted">Oct 2025 – Jul 2026</p>
+            </div>
+            <div>
+              <p class="max-w-[44rem] text-xl leading-relaxed">
+                itbid es una plataforma de compras para empresas. Los microservicios de IA los desarrollaba un compañero;{' '}
+                <span class="text-muted">mi trabajo era que funcionaran dentro del producto, y esa parte la llevé yo solo de principio a fin.</span>
+              </p>
+              <div class="mt-12 divide-y divide-line border-y border-line">
                 {work.map((w) => (
-                  <article class="rounded-xl border border-line bg-surface p-6">
-                    <h3 class="font-semibold">{w.t}</h3>
-                    <p class="mt-2 text-[0.95rem] leading-relaxed text-muted">{w.d}</p>
-                    <ul class="mt-4 flex flex-wrap gap-2 font-mono text-xs text-accent">
-                      {w.tags.map((t) => <li class="rounded border border-accent/25 bg-accent/[0.06] px-2 py-0.5">{t}</li>)}
-                    </ul>
+                  <article class="grid gap-3 py-8 sm:grid-cols-[2.5rem_1fr]">
+                    <Hex size={26} class="mt-0.5 text-accent" />
+                    <div>
+                      <h3 class="text-lg font-bold">{w.t}</h3>
+                      <p class="mt-2 max-w-[42rem] leading-relaxed text-muted">{w.d}</p>
+                      <ul class="mt-4 flex flex-wrap gap-2 font-mono text-xs text-ink/75">
+                        {w.tags.map((t) => <li class="rounded-md border border-line bg-surface px-2 py-1">{t}</li>)}
+                      </ul>
+                    </div>
                   </article>
                 ))}
               </div>
+              <p class="mt-6 text-sm text-muted">Arquitectura DDD hexagonal con tests unitarios, PostgreSQL, Docker y Git. Trabajo ágil en ClickUp con user stories y spikes.</p>
             </div>
+          </div>
 
-            <div class="mt-20">
-              <h3 class="text-2xl font-bold tracking-tight">Proyectos</h3>
-              <article class="ticket mt-6 max-w-[46rem] overflow-hidden rounded-xl border border-line bg-surface">
-                <div class="grid sm:grid-cols-[1fr_11rem]">
-                  <div class="p-7 sm:p-8">
-                    <p class="text-sm text-muted">Proyecto final de DAW</p>
-                    <h4 class="mt-1 text-2xl font-bold tracking-tight">GoEvent</h4>
-                    <p class="mt-3 leading-relaxed text-muted">
-                      Plataforma de venta de entradas para eventos, al estilo de Ticketmaster. API REST en Laravel y frontend en Vue.js.
-                    </p>
-                  </div>
-                  <ul class="flex items-center gap-4 border-t border-dashed border-white/15 p-7 font-mono text-sm text-accent sm:flex-col sm:items-start sm:justify-center sm:border-l sm:border-t-0">
-                    <li>Laravel</li><li>API REST</li><li>Vue.js</li>
-                  </ul>
+          <div class="mt-24 grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-16">
+            <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Proyectos</h2>
+            <article class="ticket max-w-[44rem] overflow-hidden rounded-2xl bg-accent text-on-accent">
+              <div class="grid sm:grid-cols-[1fr_10rem]">
+                <div class="p-7 sm:p-9">
+                  <p class="text-sm font-medium opacity-70">Proyecto final de DAW</p>
+                  <h3 class="mt-1 text-3xl font-extrabold tracking-tight">GoEvent</h3>
+                  <p class="mt-3 max-w-[30rem] leading-relaxed opacity-85">
+                    Plataforma de venta de entradas para eventos, al estilo de Ticketmaster. API REST en Laravel y frontend en Vue.js.
+                  </p>
                 </div>
-              </article>
-            </div>
+                <ul class="flex items-center gap-4 border-t-2 border-dashed border-on-accent/25 p-7 text-sm font-semibold sm:flex-col sm:items-start sm:justify-center sm:border-l-2 sm:border-t-0">
+                  <li>Laravel</li><li>API REST</li><li>Vue.js</li>
+                </ul>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
       <section id="sobre-mi" class="border-t border-line">
         <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-          <p class="font-mono text-xs uppercase tracking-[0.08em] text-accent">Sobre mí</p>
-          <h2 class="mt-3 max-w-[40rem] text-3xl font-bold tracking-[-0.02em] sm:text-4xl">Backend con base de sistemas</h2>
-          <p class="mt-5 max-w-[42rem] text-lg leading-relaxed text-muted">
-            Vengo de sistemas: antes de dedicarme al desarrollo administré servidores y redes en ADTEL y en el
-            Ajuntament de Sant Feliu de Llobregat. Ahora me estoy especializando en IA y Big Data.
-          </p>
-
-          <div class="mt-14 grid gap-14 lg:grid-cols-2">
+          <div class="grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-16">
+            <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Sobre mí</h2>
             <div>
-              <h3 class="font-mono text-xs uppercase tracking-[0.08em] text-muted">Experiencia</h3>
-              <ol class="relative mt-6">
-                <span class="absolute bottom-2 left-[5px] top-2 w-px bg-line" aria-hidden="true"></span>
+              <p class="max-w-[44rem] text-xl leading-relaxed">
+                Vengo de sistemas: antes de dedicarme al desarrollo administré servidores y redes en ADTEL y en el
+                Ajuntament de Sant Feliu de Llobregat. <span class="text-muted">Ahora me estoy especializando en IA y Big Data.</span>
+              </p>
+
+              <h3 class="mt-14 text-lg font-bold">Experiencia</h3>
+              <ol class="relative mt-6 max-w-[44rem]">
+                <span class="absolute bottom-3 left-[9px] top-3 w-px bg-line" aria-hidden="true"></span>
                 {experience.map((e, i) => (
-                  <li class="relative pb-10 pl-8 last:pb-0">
-                    <span class={`absolute left-0 top-[7px] h-[11px] w-[11px] rounded-full border-2 ${i === 0 ? 'border-accent bg-accent' : 'border-muted/60 bg-bg'}`}></span>
-                    <p class="font-mono text-xs text-muted">{e.dates}</p>
-                    <h4 class="mt-1 font-semibold">{e.role}</h4>
+                  <li class="relative pb-10 pl-10 last:pb-0">
+                    <Hex size={20} filled={i === 0} class={`absolute left-0 top-1 bg-bg ${i === 0 ? 'text-accent' : 'text-muted'}`} />
+                    <p class="text-sm text-muted">{e.dates}</p>
+                    <h4 class="mt-1 font-bold">{e.role}</h4>
                     <p class="text-sm text-muted">{e.org}, {e.place}</p>
-                    <p class="mt-2 text-[0.95rem] leading-relaxed text-ink/85">{e.text}</p>
+                    <p class="mt-2 leading-relaxed text-ink/85">{e.text}</p>
                   </li>
                 ))}
               </ol>
-            </div>
-            <div>
-              <h3 class="font-mono text-xs uppercase tracking-[0.08em] text-muted">Formación</h3>
-              <ul class="mt-6 space-y-6">
+
+              <h3 class="mt-14 text-lg font-bold">Stack</h3>
+              <dl class="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+                {stack.map((g) => (
+                  <div>
+                    <dt class="text-sm text-muted">{g.group}</dt>
+                    <dd class="mt-3 flex flex-wrap gap-2">
+                      {g.items.map(([name, icon]) => (
+                        <span class="inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface px-2.5 py-1 text-sm">
+                          {icon && <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current opacity-75" aria-hidden="true"><path d={icon.path} /></svg>}
+                          {name}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <h3 class="mt-14 text-lg font-bold">Formación</h3>
+              <ul class="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
                 {education.map((e, i) => (
-                  <li>
+                  <li class={i === 0 ? 'sm:col-span-2' : ''}>
                     <h4 class="font-semibold leading-snug">{e.title}</h4>
-                    <p class={`mt-1 text-sm ${i === 0 ? 'text-accent' : 'text-muted'}`}>{e.where}</p>
+                    <p class={`mt-1 text-sm ${i === 0 ? 'font-semibold text-accent' : 'text-muted'}`}>{e.where}</p>
                   </li>
                 ))}
                 <li>
@@ -195,35 +212,30 @@ const btnOutline = 'inline-flex items-center gap-2 rounded-md border border-whit
                   <p class="mt-1 text-sm text-muted">Certificación de freeCodeCamp</p>
                 </li>
               </ul>
-              <h3 class="mt-12 font-mono text-xs uppercase tracking-[0.08em] text-muted">Idiomas</h3>
-              <p class="mt-4">Español y catalán nativos, inglés intermedio.</p>
+              <p class="mt-10 text-muted">Español y catalán nativos, inglés intermedio.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacto" class="border-t border-line">
-        <div class="mx-auto max-w-6xl px-5 py-28 text-center sm:px-8">
-          <p class="font-mono text-xs uppercase tracking-[0.08em] text-accent">Contacto</p>
-          <h2 class="mx-auto mt-3 max-w-[36rem] text-3xl font-bold tracking-[-0.02em] sm:text-5xl sm:leading-tight">
-            ¿Hablamos de tu próximo proyecto?
-          </h2>
-          <p class="mx-auto mt-5 max-w-[32rem] text-lg text-muted">Disponible para incorporarme ya en la zona de Barcelona.</p>
-          <div class="mt-10 flex flex-wrap justify-center gap-4">
-            <a href={`mailto:${email}`} class={btnLight}>{email}</a>
-            <a href={linkedin} target="_blank" rel="noopener" class={btnOutline}>LinkedIn</a>
-            <a href={github} target="_blank" rel="noopener" class={btnOutline}>GitHub</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-line">
-      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-8 text-sm text-muted sm:px-8">
-        <p>© {new Date().getFullYear()} Arnau Canet Català</p>
-        <p>Hecho con Astro, Vue.js y Tailwind CSS</p>
+    <footer id="contacto" class="relative overflow-hidden border-t border-line">
+      <div class="grid-bg pointer-events-none absolute inset-0 rotate-180" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28">
+        <h2 class="max-w-[42rem] text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+          ¿Buscas a alguien para backend o para integrar IA en tu producto?
+        </h2>
+        <p class="mt-5 text-lg text-muted">Disponible para incorporarme ya en la zona de Barcelona.</p>
+        <a href={`mailto:${email}`} class="mt-10 inline-block break-all text-2xl font-bold underline decoration-accent decoration-[3px] underline-offset-8 hover:text-accent sm:text-4xl">{email}</a>
+        <div class="mt-8 flex gap-7">
+          <a href={linkedin} target="_blank" rel="noopener" class="font-medium text-muted hover:text-ink">LinkedIn</a>
+          <a href={github} target="_blank" rel="noopener" class="font-medium text-muted hover:text-ink">GitHub</a>
+          <a href={cv} target="_blank" rel="noopener" class="font-medium text-muted hover:text-ink">CV en PDF</a>
+        </div>
+        <p class="mt-20 text-sm text-muted/70">© {new Date().getFullYear()} Arnau Canet Català</p>
       </div>
     </footer>
+
     <script>
       const scrollIndicator = document.querySelector('.scroll-indicator');
       const toggleIndicator = () => scrollIndicator?.classList.toggle('is-hidden', window.scrollY > 50);
