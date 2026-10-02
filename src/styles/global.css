@@ -34,12 +34,7 @@
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
   ::selection { background: var(--accent); color: var(--on-accent); }
 }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-}
 
-.glow { text-shadow: 0 0 28px color-mix(in srgb, var(--accent) 35%, transparent); }
 .ticket {
   --notch: 14px;
   -webkit-mask: radial-gradient(circle var(--notch) at left 50%, #0000 98%, #000) left / 51% 100% no-repeat,
@@ -54,7 +49,7 @@
   50% { transform: translateY(10px); }
 }
 .scroll-indicator { transition: opacity .3s ease; }
-.scroll-indicator svg { animation: arrowFloat 3.5s ease-in-out infinite; }
+.scroll-indicator svg { display: block; will-change: transform; animation: arrowFloat 3.5s ease-in-out infinite; }
 .scroll-indicator.is-hidden { opacity: 0; pointer-events: none; }
 
 .grid-bg {
@@ -77,3 +72,17 @@
 .chip:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); color: var(--ink); }
 .nav-link[aria-current="true"] { color: var(--ink); }
 .nav-link[aria-current="true"] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 8px; }
+
+/* Movimiento reducido: sin desplazamientos, pero sin cortar las animaciones a 0,01 ms
+   (con iteraciones infinitas eso hace que salten de forma brusca). */
+@keyframes arrowFade {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scroll-indicator svg { animation: arrowFade 3.5s ease-in-out infinite; }
+  .status-dot { animation: none; }
+  .lift:hover { transform: none; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
