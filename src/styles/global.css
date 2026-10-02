@@ -9,6 +9,8 @@
   --line: #D3DBD7;
   --accent: #1F45C9;
   --signal: #D9922B;
+  --blue: #1D3FD0;
+  --amber: #FFBE50;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -20,6 +22,7 @@
     --line: #2C3734;
     --accent: #9DB2FF;
     --signal: #F2B544;
+    --blue: #1A33A8;
     color-scheme: dark;
   }
 }
@@ -44,4 +47,23 @@ a { color: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+.blueprint {
+  background-color: var(--blue);
+  background-image:
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+  background-position: -1px -1px;
+  color: #fff;
+}
+.ticket {
+  --notch: 14px;
+  -webkit-mask: radial-gradient(circle var(--notch) at left 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle var(--notch) at right 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+          mask: radial-gradient(circle var(--notch) at left 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle var(--notch) at right 50%, #0000 98%, #000) right / 51% 100% no-repeat;
 }

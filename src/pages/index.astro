@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import IntegrationDemo from '../components/IntegrationDemo.vue';
+import Hex from '../components/Hex.astro';
 
 const email = 'canetarn05@gmail.com';
 const links = [
@@ -61,176 +62,163 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://arnaucanet.github.io/" />
+    <meta name="theme-color" content="#1D3FD0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="min-h-screen bg-bg text-ink">
-    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-10 focus:rounded focus:bg-surface focus:px-3 focus:py-2">Saltar al contenido</a>
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-20 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-black">Saltar al contenido</a>
 
-    <header class="mx-auto flex max-w-5xl items-center justify-between px-5 py-6 sm:px-8">
-      <a href="/" class="font-semibold tracking-tight">Arnau Canet</a>
-      <nav class="flex gap-5 text-sm text-muted">
-        <a class="hover:text-ink" href="#itbid">Trabajo</a>
-        <a class="hover:text-ink" href="#experiencia">Experiencia</a>
-        <a class="hover:text-ink" href="#contacto">Contacto</a>
-      </nav>
-    </header>
+    <div class="blueprint relative overflow-hidden">
+      <header class="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-6 sm:px-8">
+        <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight">
+          <Hex size={22} class="text-[var(--amber)]" filled />
+          Arnau Canet
+        </a>
+        <nav class="flex gap-5 text-sm text-white/75">
+          <a class="hover:text-white" href="#itbid">Trabajo</a>
+          <a class="hidden hover:text-white sm:inline" href="#experiencia">Experiencia</a>
+          <a class="hover:text-white" href="#contacto">Contacto</a>
+        </nav>
+      </header>
 
-    <main id="contenido">
-      <section class="mx-auto max-w-5xl px-5 pb-20 pt-10 sm:px-8 sm:pt-16">
-        <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+      <section class="relative mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 sm:pb-28 sm:pt-16">
+        <div class="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div>
-            <p class="text-muted">Arnau Canet Català, desarrollador backend en Barcelona</p>
-            <h1 class="mt-4 text-[2.6rem] font-bold leading-[1.05] tracking-[-0.03em] sm:text-6xl">
+            <p class="text-white/70">Arnau Canet Català, desarrollador backend en Barcelona</p>
+            <h1 class="mt-5 text-[2.9rem] font-extrabold leading-[0.98] tracking-[-0.035em] sm:text-[4.6rem]">
               Hago que la IA funcione dentro del producto.
             </h1>
-            <p class="mt-6 max-w-[34rem] text-lg text-muted">
+            <p class="mt-7 max-w-[32rem] text-lg leading-relaxed text-white/80">
               Trabajo con PHP y Symfony. En itbid integré en la plataforma, en solitario,
               dos productos basados en LLM: un validador de documentos y un chatbot interno.
             </p>
-            <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href={`mailto:${email}`} class="rounded-full bg-ink px-5 py-2.5 font-semibold text-bg hover:opacity-90">Escríbeme</a>
+            <div class="mt-9 flex flex-wrap items-center gap-x-7 gap-y-3">
+              <a href={`mailto:${email}`} class="rounded-full bg-white px-6 py-3 font-semibold text-[var(--blue)] shadow-[0_10px_30px_-10px_rgba(0,0,30,.5)] transition-transform hover:-translate-y-0.5">Escríbeme</a>
               {links.map((l) => (
-                <a href={l.href} class="font-medium underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent" target="_blank" rel="noopener">{l.label}</a>
+                <a href={l.href} class="font-medium underline decoration-white/35 decoration-2 underline-offset-[6px] hover:decoration-[var(--amber)]" target="_blank" rel="noopener">{l.label}</a>
               ))}
             </div>
           </div>
           <div>
             <IntegrationDemo client:visible />
-            <p class="mt-3 text-sm text-muted">Así viaja una petición en los dos productos. Pulsa el botón para verlo paso a paso.</p>
+            <p class="mt-3 text-sm text-white/60">Así viaja una petición en cada producto. Pulsa el botón para verlo paso a paso.</p>
           </div>
         </div>
       </section>
+    </div>
 
-      <section id="itbid" class="border-t border-line">
-        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
-          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
-            <div>
-              <h2 class="text-2xl font-bold tracking-tight">Mi trabajo en itbid</h2>
-              <p class="mt-2 text-sm text-muted">Oct 2025 – Jul 2026</p>
-            </div>
-            <div class="max-w-[42rem]">
-              <p class="text-lg">
-                itbid es una plataforma de compras para empresas. Los microservicios de IA los desarrollaba
-                un compañero; mi trabajo era que funcionaran dentro del producto, y esa parte la llevé yo solo
-                de principio a fin.
-              </p>
-
-              <div class="mt-10 space-y-9">
-                <article>
-                  <h3 class="text-lg font-semibold">Validador inteligente de documentos</h3>
-                  <p class="mt-2 text-muted">
-                    Integré en la plataforma el análisis y la verificación automática de documentos mediante LLM:
-                    diseño de la integración, desarrollo backend en Symfony y comunicación con el microservicio a través de RabbitMQ.
-                  </p>
-                </article>
-                <article>
-                  <h3 class="text-lg font-semibold">Chatbot conversacional interno</h3>
-                  <p class="mt-2 text-muted">
-                    Integré el chatbot en la plataforma, comunicándola con el microservicio por HTTP, y diseñé la gestión de sesiones con memoria de conversación.
-                    También desarrollé el componente de chat en Vue.js: interfaz redimensionable y descarga de la conversación en Word.
-                  </p>
-                </article>
-                <article>
-                  <h3 class="text-lg font-semibold">Sistema de créditos y tokens</h3>
-                  <p class="mt-2 text-muted">
-                    Participé en el sistema que controla el consumo de IA de cada cliente: consumidores de RabbitMQ,
-                    planes de pruebas de QA, depuración de errores en Symfony y Doctrine, y documentación técnica.
-                  </p>
-                </article>
-              </div>
-
-              <p class="mt-10 text-sm text-muted">
-                Arquitectura DDD hexagonal con tests unitarios, PostgreSQL, Docker y Git. Trabajo ágil en ClickUp con user stories y spikes.
-              </p>
-            </div>
-          </div>
+    <main id="contenido">
+      <section id="itbid" class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28">
+        <div class="flex flex-wrap items-baseline justify-between gap-3">
+          <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Mi trabajo en itbid</h2>
+          <p class="text-muted">Oct 2025 – Jul 2026</p>
         </div>
+        <p class="mt-6 max-w-[46rem] text-xl leading-relaxed sm:text-2xl sm:leading-relaxed">
+          itbid es una plataforma de compras para empresas. Los microservicios de IA los desarrollaba
+          un compañero; <span class="text-muted">mi trabajo era que funcionaran dentro del producto, y esa parte la llevé yo solo de principio a fin.</span>
+        </p>
+
+        <div class="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
+          {[
+            { t: 'Validador inteligente de documentos', d: 'Integré en la plataforma el análisis y la verificación automática de documentos mediante LLM: diseño de la integración, desarrollo backend en Symfony y comunicación con el microservicio a través de RabbitMQ.', via: 'Vía RabbitMQ' },
+            { t: 'Chatbot conversacional interno', d: 'Integré el chatbot en la plataforma, comunicándola con el microservicio por HTTP, y diseñé la gestión de sesiones con memoria de conversación. También desarrollé el componente de chat en Vue.js: interfaz redimensionable y descarga de la conversación en Word.', via: 'Vía HTTP' },
+            { t: 'Sistema de créditos y tokens', d: 'Participé en el sistema que controla el consumo de IA de cada cliente: consumidores de RabbitMQ, planes de pruebas de QA, depuración de errores en Symfony y Doctrine, y documentación técnica.', via: 'Consumidores RabbitMQ' },
+          ].map((c) => (
+            <article class="flex flex-col bg-surface p-7">
+              <Hex size={34} class="text-accent" />
+              <h3 class="mt-5 text-lg font-bold leading-snug">{c.t}</h3>
+              <p class="mt-3 flex-1 text-[0.98rem] leading-relaxed text-muted">{c.d}</p>
+              <p class="mt-6 text-sm font-semibold text-accent">{c.via}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-6 text-sm text-muted">
+          Arquitectura DDD hexagonal con tests unitarios, PostgreSQL, Docker y Git. Trabajo ágil en ClickUp con user stories y spikes.
+        </p>
       </section>
 
       <section id="experiencia" class="border-t border-line">
-        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
-          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
-            <h2 class="text-2xl font-bold tracking-tight">Experiencia</h2>
-            <ol class="max-w-[42rem] space-y-10">
-              {experience.map((e) => (
-                <li class="grid gap-1 sm:grid-cols-[9.5rem_1fr] sm:gap-6">
-                  <p class="text-sm text-muted sm:pt-1">{e.dates}</p>
-                  <div>
-                    <h3 class="font-semibold">{e.role}</h3>
-                    <p class="text-sm text-muted">{e.org}, {e.place}</p>
-                    <p class="mt-2">{e.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+        <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-[16rem_1fr]">
+          <h2 class="text-3xl font-extrabold tracking-[-0.02em]">Experiencia</h2>
+          <ol class="relative max-w-[44rem]">
+            <span class="absolute bottom-3 left-[9px] top-3 w-px bg-line" aria-hidden="true"></span>
+            {experience.map((e, i) => (
+              <li class="relative pb-12 pl-10 last:pb-0">
+                <Hex size={20} filled={i === 0} class={`absolute left-0 top-1 bg-bg ${i === 0 ? 'text-accent' : 'text-muted'}`} />
+                <p class="text-sm font-medium text-muted">{e.dates}</p>
+                <h3 class="mt-1 text-lg font-bold">{e.role}</h3>
+                <p class="text-muted">{e.org}, {e.place}</p>
+                <p class="mt-3 leading-relaxed">{e.text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       <section class="border-t border-line">
-        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
-          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
-            <h2 class="text-2xl font-bold tracking-tight">Proyectos</h2>
-            <div class="max-w-[42rem]">
-              <article>
-                <h3 class="text-lg font-semibold">GoEvent</h3>
-                <p class="text-sm text-muted">Proyecto final de DAW</p>
-                <p class="mt-2">
+        <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-[16rem_1fr]">
+          <h2 class="text-3xl font-extrabold tracking-[-0.02em]">Proyectos</h2>
+          <article class="ticket max-w-[44rem] overflow-hidden rounded-2xl bg-ink text-bg">
+            <div class="grid sm:grid-cols-[1fr_11rem]">
+              <div class="p-7 sm:p-9">
+                <p class="text-sm opacity-60">Proyecto final de DAW</p>
+                <h3 class="mt-2 text-3xl font-extrabold tracking-tight">GoEvent</h3>
+                <p class="mt-4 max-w-[30rem] leading-relaxed opacity-85">
                   Plataforma de venta de entradas para eventos, al estilo de Ticketmaster.
                   API REST en Laravel y frontend en Vue.js.
                 </p>
-              </article>
+              </div>
+              <div class="flex items-center gap-3 border-t-2 border-dashed border-bg/25 p-7 sm:flex-col sm:items-start sm:justify-center sm:border-l-2 sm:border-t-0">
+                {['Laravel', 'API REST', 'Vue.js'].map((t) => <span class="text-sm font-semibold">{t}</span>)}
+              </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
       <section class="border-t border-line">
-        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
-          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
-            <h2 class="text-2xl font-bold tracking-tight">Stack</h2>
-            <dl class="grid max-w-[42rem] gap-6 sm:grid-cols-2">
-              {stack.map((s) => (
-                <div>
-                  <dt class="font-semibold">{s.group}</dt>
-                  <dd class="mt-2 flex flex-wrap gap-1.5">
-                    {s.items.map((i) => <span class="rounded-md border border-line bg-surface px-2 py-0.5 text-sm">{i}</span>)}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+        <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-[16rem_1fr]">
+          <h2 class="text-3xl font-extrabold tracking-[-0.02em]">Stack</h2>
+          <dl class="grid gap-x-10 gap-y-9 sm:grid-cols-2">
+            {stack.map((s) => (
+              <div>
+                <dt class="font-bold">{s.group}</dt>
+                <dd class="mt-3 flex flex-wrap gap-2">
+                  {s.items.map((i) => <span class="rounded-lg border border-line bg-surface px-2.5 py-1 text-sm">{i}</span>)}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
       <section class="border-t border-line">
-        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
-          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
-            <h2 class="text-2xl font-bold tracking-tight">Formación</h2>
-            <ul class="max-w-[42rem] space-y-5">
-              {education.map((e) => (
-                <li>
-                  <h3 class="font-semibold">{e.title}</h3>
-                  <p class="text-sm text-muted">{e.where}{e.dates && `, ${e.dates}`}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-[16rem_1fr]">
+          <h2 class="text-3xl font-extrabold tracking-[-0.02em]">Formación</h2>
+          <ul class="grid gap-x-10 gap-y-7 sm:grid-cols-2">
+            {education.map((e, i) => (
+              <li class={i === 0 ? 'sm:col-span-2' : ''}>
+                <h3 class={`font-bold leading-snug ${i === 0 ? 'text-lg' : ''}`}>{e.title}</h3>
+                <p class={`mt-1 text-sm ${i === 0 ? 'font-semibold text-accent' : 'text-muted'}`}>{e.where}{e.dates && `, ${e.dates}`}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </main>
 
-    <footer id="contacto" class="bg-ink text-bg">
-      <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
-        <h2 class="max-w-[38rem] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+    <footer id="contacto" class="blueprint">
+      <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28">
+        <h2 class="max-w-[42rem] text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
           ¿Buscas a alguien para backend o para integrar IA en tu producto?
         </h2>
-        <p class="mt-4 opacity-75">Disponible para incorporarme ya en la zona de Barcelona.</p>
-        <a href={`mailto:${email}`} class="mt-8 inline-block text-xl font-semibold underline decoration-signal decoration-2 underline-offset-[6px] sm:text-2xl">{email}</a>
-        <div class="mt-6 flex gap-6">
-          {links.map((l) => <a href={l.href} class="opacity-80 hover:opacity-100" target="_blank" rel="noopener">{l.label}</a>)}
+        <p class="mt-5 text-lg text-white/75">Disponible para incorporarme ya en la zona de Barcelona.</p>
+        <a href={`mailto:${email}`} class="mt-10 inline-block break-all text-2xl font-bold underline decoration-[var(--amber)] decoration-[3px] underline-offset-8 sm:text-4xl">{email}</a>
+        <div class="mt-8 flex gap-7">
+          {links.map((l) => <a href={l.href} class="font-medium text-white/80 hover:text-white" target="_blank" rel="noopener">{l.label}</a>)}
         </div>
-        <p class="mt-16 text-sm opacity-50">© {new Date().getFullYear()} Arnau Canet Català</p>
+        <p class="mt-20 text-sm text-white/50">© {new Date().getFullYear()} Arnau Canet Català</p>
       </div>
     </footer>
   </body>
