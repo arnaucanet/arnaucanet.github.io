@@ -22,6 +22,41 @@ const work = [
   { t: 'Sistema de créditos y tokens', what: 'Controla el consumo de IA de cada cliente de la plataforma.', mine: 'Definí consumidores de RabbitMQ, redacté planes de pruebas de QA, depuré errores en Symfony y Doctrine y documenté las funcionalidades.', tags: ['RabbitMQ', 'Doctrine', 'QA'] },
 ];
 
+const projects = [
+  {
+    name: 'LoL Coach', kind: 'Proyecto personal', date: 'Jul 2026', ai: true,
+    summary: 'Asistente con IA para League of Legends: analiza el draft o la partida en vivo y recomienda build, runas y estrategia.',
+    problem: 'Durante la selección de campeones no hay tiempo para cruzar counters, estadísticas y builds de varias webs.',
+    did: 'Backend en PHP que combina la API oficial de Riot Games, Data Dragon y un LLM de OpenAI en modo JSON estructurado. Las builds salen de partidas reales de jugadores Challenger, descargadas en paralelo con curl_multi, con caché en disco y control del rate limit.',
+    tech: ['PHP', 'OpenAI API', 'Riot Games API', 'JavaScript', 'curl_multi'],
+    links: [{ label: 'Web', href: 'https://arnaucanet.github.io/lol-coach/' }, { label: 'Código', href: 'https://github.com/arnaucanet/lol-coach', gh: true }],
+  },
+  {
+    name: 'MockMate', kind: 'Open source', date: 'May 2026',
+    summary: 'Servidor de API falso que funciona 100 % en el navegador, sin backend ni dependencias.',
+    problem: 'Para probar un frontend sin backend normalmente hay que levantar y configurar un servidor de mocks.',
+    did: 'Un Service Worker intercepta las llamadas fetch() y responde con las rutas definidas en un editor JSON con validación en vivo. Permite simular latencia y errores HTTP, y muestra un log de peticiones en tiempo real.',
+    tech: ['JavaScript', 'Service Workers', 'HTML', 'CSS'],
+    links: [{ label: 'Demo', href: 'https://arnaucanet.github.io/mockmate/' }, { label: 'Código', href: 'https://github.com/arnaucanet/mockmate', gh: true }],
+  },
+  {
+    name: 'GoEvent', kind: 'Proyecto final de DAW, en pareja', date: 'Dic 2025 – May 2026',
+    summary: 'Plataforma de venta de entradas al estilo Ticketmaster, con web pública y panel de administración.',
+    problem: 'Centralizar la gestión de eventos, recintos y artistas, y la compra de entradas, en una sola aplicación.',
+    did: 'SPA con API REST en Laravel y Vue 3. Me encargué de la gestión de eventos (CRUD y formularios con validación), el listado público con búsqueda, paginación y ordenación, el flujo de compra y los pedidos, la autenticación con token y los tests de la API.',
+    tech: ['Laravel', 'Sanctum', 'Vue 3', 'Pinia', 'MySQL', 'PHPUnit'],
+    links: [{ label: 'Código', href: 'https://github.com/arnaucanet/GoEvent', gh: true }],
+  },
+  {
+    name: 'Netflix Eats', kind: 'Proyecto de DAW', date: 'Oct 2025 – Mar 2026',
+    summary: 'Plataforma de pedidos de comida con arquitectura MVC propia en PHP, sin framework.',
+    problem: 'Construir una tienda completa entendiendo cada capa, sin apoyarse en un framework.',
+    did: 'Capa de datos con DAOs y consultas preparadas, API interna para el panel de administración, carrito y checkout, códigos de descuento, filtros de pedidos con conversión de divisas y registro de auditoría de las acciones de los administradores. Desarrollado con ramas y más de 20 pull requests.',
+    tech: ['PHP', 'MVC', 'MySQL', 'JavaScript', 'AJAX'],
+    links: [{ label: 'Código', href: 'https://github.com/arnaucanet/MVC', gh: true }],
+  },
+];
+
 const experience = [
   { role: 'Backend & AI Integration Developer', org: 'itbid', place: 'Barcelona, híbrido', dates: 'Oct 2025 – Jul 2026', text: 'Integración en la plataforma de dos productos de IA basados en LLM, sistema de créditos y tokens, y frontend del chat.' },
   { role: 'Técnico de sistemas', org: 'ADTEL Sistemas de Telecomunicación', place: 'Molins de Rei', dates: 'Jul 2024 – May 2025', text: 'Servidores Linux y Windows Server, red corporativa, monitorización, copias de seguridad y soporte.' },
@@ -88,6 +123,7 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
         </a>
         <nav class="flex items-center gap-1 text-sm sm:gap-2" aria-label="Principal">
           <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#trabajo">Trabajo</a>
+          <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#proyectos">Proyectos</a>
           <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#sobre-mi">Sobre mí</a>
           <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#contacto">Contacto</a>
           <a href={github} target="_blank" rel="noopener" aria-label="GitHub" class="hidden rounded-md p-2 text-muted hover:text-ink sm:inline-flex">
@@ -108,6 +144,7 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
       <div id="mobile-menu" class="hidden border-t border-white/[0.06] sm:hidden">
         <div class="mx-auto flex max-w-6xl flex-col px-5 py-3 text-base">
           <a class="nav-link py-3 text-muted" href="#trabajo">Trabajo</a>
+          <a class="nav-link py-3 text-muted" href="#proyectos">Proyectos</a>
           <a class="nav-link py-3 text-muted" href="#sobre-mi">Sobre mí</a>
           <a class="nav-link py-3 text-muted" href="#contacto">Contacto</a>
           <div class="mt-2 flex gap-5 border-t border-white/[0.06] pt-4 pb-2">
@@ -189,28 +226,57 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
             </div>
           </div>
 
-          <div class="mt-24 grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-16">
-            <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Proyectos</h2>
+        </div>
+      </section>
+
+      <section id="proyectos" class="border-t border-line">
+        <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8">
+          <div class="flex flex-wrap items-end justify-between gap-6">
             <div>
-            <article class="ticket lift max-w-[44rem] overflow-hidden rounded-2xl bg-accent text-on-accent">
-              <div class="grid sm:grid-cols-[1fr_10rem]">
-                <div class="p-7 sm:p-9">
-                  <p class="text-sm font-medium opacity-70">Proyecto final de DAW</p>
-                  <h3 class="mt-1 text-3xl font-extrabold tracking-tight">GoEvent</h3>
-                  <p class="mt-3 max-w-[30rem] leading-relaxed opacity-85">
-                    Plataforma de venta de entradas para eventos, al estilo de Ticketmaster. API REST en Laravel y frontend en Vue.js.
-                  </p>
-                </div>
-                <ul class="flex items-center gap-4 border-t-2 border-dashed border-on-accent/25 p-7 text-sm font-semibold sm:flex-col sm:items-start sm:justify-center sm:border-l-2 sm:border-t-0">
-                  <li>Laravel</li><li>API REST</li><li>Vue.js</li>
-                </ul>
-              </div>
-            </article>
-            <a href={github} target="_blank" rel="noopener" class="group mt-6 inline-flex items-center gap-2.5 font-semibold text-ink/90 hover:text-ink">
-              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
-              <span class="underline decoration-white/20 underline-offset-4 group-hover:decoration-accent">Ver todos mis repositorios en GitHub</span>
-            </a>
+              <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Proyectos</h2>
+              <p class="mt-3 max-w-[38rem] text-lg text-muted">Lo que he construido fuera del trabajo: herramientas propias y proyectos del ciclo.</p>
             </div>
+            <a href={github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 font-semibold transition hover:border-white/35 hover:bg-white/5">
+              <svg viewBox="0 0 24 24" class="h-[18px] w-[18px] fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
+              Todos mis repositorios
+            </a>
+          </div>
+
+          <div class="mt-12 grid gap-5 md:grid-cols-2">
+            {projects.map((p) => (
+              <article class={`lift flex flex-col rounded-2xl border bg-surface p-7 ${p.ai ? 'border-accent/40' : 'border-line'}`}>
+                <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+                  <span class={p.ai ? 'font-semibold text-accent' : 'text-muted'}>{p.kind}{p.ai && ' · IA'}</span>
+                  <span class="text-muted">{p.date}</span>
+                </div>
+                <h3 class="mt-3 text-2xl font-extrabold tracking-tight">{p.name}</h3>
+                <p class="mt-2 text-ink/85">{p.summary}</p>
+                <dl class="mt-5 space-y-4 text-[0.95rem] leading-relaxed">
+                  <div>
+                    <dt class="font-semibold text-accent">El problema</dt>
+                    <dd class="mt-1 text-muted">{p.problem}</dd>
+                  </div>
+                  <div>
+                    <dt class="font-semibold text-accent">Qué hice</dt>
+                    <dd class="mt-1 text-muted">{p.did}</dd>
+                  </div>
+                </dl>
+                <ul class="mt-5 flex flex-wrap gap-2 font-mono text-xs text-ink/75">
+                  {p.tech.map((t) => <li class="chip rounded-md border border-line bg-bg px-2 py-1">{t}</li>)}
+                </ul>
+                <div class="mt-auto flex flex-wrap gap-3 pt-6">
+                  {p.links.map((l) => (
+                    <a href={l.href} target="_blank" rel="noopener" class={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${l.gh ? 'border border-white/15 hover:border-white/35 hover:bg-white/5' : 'bg-ink text-bg hover:bg-white'}`}>
+                      {l.gh
+                        ? <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
+                        : <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>}
+                      {l.label}
+                      <span class="sr-only"> de {p.name}</span>
+                    </a>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -316,7 +382,7 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
 
       // aria-current en la navegación según la sección visible
       const links = [...document.querySelectorAll('.nav-link')];
-      const sections = ['trabajo', 'sobre-mi', 'contacto'].map((id) => document.getElementById(id)).filter(Boolean);
+      const sections = ['trabajo', 'proyectos', 'sobre-mi', 'contacto'].map((id) => document.getElementById(id)).filter(Boolean);
       const setCurrent = (id) => links.forEach((l) => {
         if (l.getAttribute('href') === `#${id}`) l.setAttribute('aria-current', 'true');
         else l.removeAttribute('aria-current');

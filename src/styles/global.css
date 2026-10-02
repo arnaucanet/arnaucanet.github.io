@@ -35,13 +35,6 @@
   ::selection { background: var(--accent); color: var(--on-accent); }
 }
 
-.ticket {
-  --notch: 14px;
-  -webkit-mask: radial-gradient(circle var(--notch) at left 50%, #0000 98%, #000) left / 51% 100% no-repeat,
-                radial-gradient(circle var(--notch) at right 50%, #0000 98%, #000) right / 51% 100% no-repeat;
-          mask: radial-gradient(circle var(--notch) at left 50%, #0000 98%, #000) left / 51% 100% no-repeat,
-                radial-gradient(circle var(--notch) at right 50%, #0000 98%, #000) right / 51% 100% no-repeat;
-}
 @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 50% { box-shadow: 0 0 0 5px transparent; } }
 .status-dot { animation: pulse-dot 2.4s ease-in-out infinite; }
 @keyframes arrowFloat {
