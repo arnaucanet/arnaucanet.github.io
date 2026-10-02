@@ -2,29 +2,15 @@
 @import "@fontsource-variable/schibsted-grotesk";
 
 :root {
-  --bg: #F2F4F1;
-  --surface: #FFFFFF;
-  --ink: #17201C;
-  --muted: #56625D;
-  --line: #D3DBD7;
-  --accent: #1F45C9;
-  --signal: #D9922B;
-  --blue: #1D3FD0;
-  --amber: #FFBE50;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121816;
-    --surface: #19211F;
-    --ink: #E5EBE8;
-    --muted: #9AA7A1;
-    --line: #2C3734;
-    --accent: #9DB2FF;
-    --signal: #F2B544;
-    --blue: #1A33A8;
-    color-scheme: dark;
-  }
+  --bg: #0F1513;
+  --surface: #161E1C;
+  --ink: #E7EDEA;
+  --muted: #95A39D;
+  --line: #24302C;
+  --accent: #F2B544;
+  --signal: #F2B544;
+  --on-accent: #1E1503;
+  color-scheme: dark;
 }
 
 @theme {
@@ -36,6 +22,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-signal: var(--signal);
+  --color-on-accent: var(--on-accent);
 }
 
 @layer base {
@@ -43,22 +30,23 @@ html { background: var(--bg); color: var(--ink); }
 body { font-family: var(--font-sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-::selection { background: var(--accent); color: var(--bg); }
+::selection { background: var(--accent); color: var(--on-accent); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
 .blueprint {
-  background-color: var(--blue);
+  background-color: #0B100F;
   background-image:
-    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
-  background-position: -1px -1px;
-  color: #fff;
+    radial-gradient(60rem 30rem at 85% -10%, rgba(242,181,68,.08), transparent 60%),
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size: auto, 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+  background-position: 0 0, -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+  color: var(--ink);
 }
 .ticket {
   --notch: 14px;
