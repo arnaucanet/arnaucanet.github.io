@@ -1,0 +1,237 @@
+---
+import '../styles/global.css';
+import IntegrationDemo from '../components/IntegrationDemo.vue';
+
+const email = 'canetarn05@gmail.com';
+const links = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/arnau-canet' },
+  { label: 'GitHub', href: 'https://github.com/arnaucanet' },
+];
+
+const experience = [
+  {
+    role: 'Backend & AI Integration Developer',
+    org: 'itbid',
+    place: 'Barcelona, híbrido',
+    dates: 'Oct 2025 – Jul 2026',
+    text: 'Integración en la plataforma de dos productos de IA basados en LLM, sistema de créditos y tokens, y frontend del chat.',
+  },
+  {
+    role: 'Técnico de sistemas',
+    org: 'ADTEL Sistemas de Telecomunicación',
+    place: 'Molins de Rei',
+    dates: 'Jul 2024 – May 2025',
+    text: 'Administración de servidores Linux y Windows Server, red corporativa, monitorización, copias de seguridad y soporte.',
+  },
+  {
+    role: 'Técnico informático en prácticas',
+    org: 'Ajuntament de Sant Feliu de Llobregat',
+    place: 'Sant Feliu de Llobregat',
+    dates: 'Nov 2022 – May 2023',
+    text: 'Soporte a usuarios, mantenimiento de equipos, redes e instalación de software en la administración pública.',
+  },
+];
+
+const education = [
+  { title: 'Curso de Especialización en IA y Big Data (Máster FP)', where: 'En curso', dates: '2026 – 2027' },
+  { title: 'CFGS Desarrollo de Aplicaciones Web (DAW)', where: 'IES Bernat el Ferrer', dates: '2023 – 2026' },
+  { title: 'CFGS Administración de Sistemas Informáticos en Red (ASIX)', where: 'IES Bernat el Ferrer', dates: '2023 – 2025' },
+  { title: 'CFGM Sistemas Microinformáticos y Redes (SMX)', where: 'IES Bernat el Ferrer', dates: '' },
+  { title: 'JavaScript Algorithms and Data Structures', where: 'Certificación de freeCodeCamp', dates: '' },
+];
+
+const stack = [
+  { group: 'Backend', items: ['PHP', 'Symfony', 'Laravel', 'APIs REST', 'DDD hexagonal', 'Tests unitarios', 'RabbitMQ'] },
+  { group: 'IA y datos', items: ['Integración de LLMs', 'PostgreSQL', 'MySQL / MariaDB', 'Python (en formación)'] },
+  { group: 'Frontend', items: ['JavaScript', 'Vue.js', 'HTML', 'CSS', 'Twig'] },
+  { group: 'DevOps y sistemas', items: ['Docker', 'Git', 'GitHub', 'Linux', 'Apache / Nginx', 'Redes'] },
+];
+
+const title = 'Arnau Canet Català · Backend & AI Integration Developer';
+const description = 'Desarrollador backend en PHP y Symfony que integra productos de inteligencia artificial en plataformas empresariales.';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arnaucanet.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen bg-bg text-ink">
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-10 focus:rounded focus:bg-surface focus:px-3 focus:py-2">Saltar al contenido</a>
+
+    <header class="mx-auto flex max-w-5xl items-center justify-between px-5 py-6 sm:px-8">
+      <a href="/" class="font-semibold tracking-tight">Arnau Canet</a>
+      <nav class="flex gap-5 text-sm text-muted">
+        <a class="hover:text-ink" href="#itbid">Trabajo</a>
+        <a class="hover:text-ink" href="#experiencia">Experiencia</a>
+        <a class="hover:text-ink" href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section class="mx-auto max-w-5xl px-5 pb-20 pt-10 sm:px-8 sm:pt-16">
+        <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+          <div>
+            <p class="text-muted">Arnau Canet Català, desarrollador backend en Barcelona</p>
+            <h1 class="mt-4 text-[2.6rem] font-bold leading-[1.05] tracking-[-0.03em] sm:text-6xl">
+              Hago que la IA funcione dentro del producto.
+            </h1>
+            <p class="mt-6 max-w-[34rem] text-lg text-muted">
+              Trabajo con PHP y Symfony. En itbid integré en la plataforma, en solitario,
+              dos productos basados en LLM: un validador de documentos y un chatbot interno.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a href={`mailto:${email}`} class="rounded-full bg-ink px-5 py-2.5 font-semibold text-bg hover:opacity-90">Escríbeme</a>
+              {links.map((l) => (
+                <a href={l.href} class="font-medium underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent" target="_blank" rel="noopener">{l.label}</a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <IntegrationDemo client:visible />
+            <p class="mt-3 text-sm text-muted">Así viaja una petición en los dos productos. Pulsa el botón para verlo paso a paso.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="itbid" class="border-t border-line">
+        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
+          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight">Mi trabajo en itbid</h2>
+              <p class="mt-2 text-sm text-muted">Oct 2025 – Jul 2026</p>
+            </div>
+            <div class="max-w-[42rem]">
+              <p class="text-lg">
+                itbid es una plataforma de compras para empresas. Los microservicios de IA los desarrollaba
+                un compañero; mi trabajo era que funcionaran dentro del producto, y esa parte la llevé yo solo
+                de principio a fin.
+              </p>
+
+              <div class="mt-10 space-y-9">
+                <article>
+                  <h3 class="text-lg font-semibold">Validador inteligente de documentos</h3>
+                  <p class="mt-2 text-muted">
+                    Integré en la plataforma el análisis y la verificación automática de documentos mediante LLM:
+                    diseño de la integración, desarrollo backend en Symfony y comunicación con el microservicio a través de RabbitMQ.
+                  </p>
+                </article>
+                <article>
+                  <h3 class="text-lg font-semibold">Chatbot conversacional interno</h3>
+                  <p class="mt-2 text-muted">
+                    Integré el chatbot en la plataforma y diseñé la gestión de sesiones con memoria de conversación.
+                    También desarrollé el componente de chat en Vue.js: interfaz redimensionable y descarga de la conversación en Word.
+                  </p>
+                </article>
+                <article>
+                  <h3 class="text-lg font-semibold">Sistema de créditos y tokens</h3>
+                  <p class="mt-2 text-muted">
+                    Participé en el sistema que controla el consumo de IA de cada cliente: consumidores de RabbitMQ,
+                    planes de pruebas de QA, depuración de errores en Symfony y Doctrine, y documentación técnica.
+                  </p>
+                </article>
+              </div>
+
+              <p class="mt-10 text-sm text-muted">
+                Arquitectura DDD hexagonal con tests unitarios, PostgreSQL, Docker y Git. Trabajo ágil en ClickUp con user stories y spikes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia" class="border-t border-line">
+        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
+          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
+            <h2 class="text-2xl font-bold tracking-tight">Experiencia</h2>
+            <ol class="max-w-[42rem] space-y-10">
+              {experience.map((e) => (
+                <li class="grid gap-1 sm:grid-cols-[9.5rem_1fr] sm:gap-6">
+                  <p class="text-sm text-muted sm:pt-1">{e.dates}</p>
+                  <div>
+                    <h3 class="font-semibold">{e.role}</h3>
+                    <p class="text-sm text-muted">{e.org}, {e.place}</p>
+                    <p class="mt-2">{e.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-line">
+        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
+          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
+            <h2 class="text-2xl font-bold tracking-tight">Proyectos</h2>
+            <div class="max-w-[42rem]">
+              <article>
+                <h3 class="text-lg font-semibold">GoEvent</h3>
+                <p class="text-sm text-muted">Proyecto final de DAW</p>
+                <p class="mt-2">
+                  Plataforma de venta de entradas para eventos, al estilo de Ticketmaster.
+                  API REST en Laravel y frontend en Vue.js.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-line">
+        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
+          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
+            <h2 class="text-2xl font-bold tracking-tight">Stack</h2>
+            <dl class="grid max-w-[42rem] gap-6 sm:grid-cols-2">
+              {stack.map((s) => (
+                <div>
+                  <dt class="font-semibold">{s.group}</dt>
+                  <dd class="mt-2 flex flex-wrap gap-1.5">
+                    {s.items.map((i) => <span class="rounded-md border border-line bg-surface px-2 py-0.5 text-sm">{i}</span>)}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-line">
+        <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
+          <div class="grid gap-10 lg:grid-cols-[14rem_1fr]">
+            <h2 class="text-2xl font-bold tracking-tight">Formación</h2>
+            <ul class="max-w-[42rem] space-y-5">
+              {education.map((e) => (
+                <li>
+                  <h3 class="font-semibold">{e.title}</h3>
+                  <p class="text-sm text-muted">{e.where}{e.dates && `, ${e.dates}`}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contacto" class="bg-ink text-bg">
+      <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8">
+        <h2 class="max-w-[38rem] text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+          ¿Buscas a alguien para backend o para integrar IA en tu producto?
+        </h2>
+        <p class="mt-4 opacity-75">Disponible para incorporarme ya en la zona de Barcelona.</p>
+        <a href={`mailto:${email}`} class="mt-8 inline-block text-xl font-semibold underline decoration-signal decoration-2 underline-offset-[6px] sm:text-2xl">{email}</a>
+        <div class="mt-6 flex gap-6">
+          {links.map((l) => <a href={l.href} class="opacity-80 hover:opacity-100" target="_blank" rel="noopener">{l.label}</a>)}
+        </div>
+        <p class="mt-16 text-sm opacity-50">© {new Date().getFullYear()} Arnau Canet Català</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "@fontsource-variable/schibsted-grotesk";
+
+:root {
+  --bg: #F2F4F1;
+  --surface: #FFFFFF;
+  --ink: #17201C;
+  --muted: #56625D;
+  --line: #D3DBD7;
+  --accent: #1F45C9;
+  --signal: #D9922B;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121816;
+    --surface: #19211F;
+    --ink: #E5EBE8;
+    --muted: #9AA7A1;
+    --line: #2C3734;
+    --accent: #9DB2FF;
+    --signal: #F2B544;
+    color-scheme: dark;
+  }
+}
+
+@theme {
+  --font-sans: "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-signal: var(--signal);
+}
+
+@layer base {
+html { background: var(--bg); color: var(--ink); }
+body { font-family: var(--font-sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent); color: var(--bg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
