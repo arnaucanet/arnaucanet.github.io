@@ -102,8 +102,8 @@ const btnOutline = 'inline-flex items-center gap-2 rounded-md border border-whit
             ))}
           </ul>
         </div>
-        <a href="#trabajo" aria-label="Ir a mi trabajo" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted hover:text-ink">
-          <svg viewBox="0 0 24 24" class="bob h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        <a href="#trabajo" aria-label="Ir a mi trabajo" class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-muted hover:text-ink">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </a>
       </section>
 
@@ -224,5 +224,11 @@ const btnOutline = 'inline-flex items-center gap-2 rounded-md border border-whit
         <p>Hecho con Astro, Vue.js y Tailwind CSS</p>
       </div>
     </footer>
+    <script>
+      const scrollIndicator = document.querySelector('.scroll-indicator');
+      const toggleIndicator = () => scrollIndicator?.classList.toggle('is-hidden', window.scrollY > 50);
+      window.addEventListener('scroll', toggleIndicator, { passive: true });
+      toggleIndicator();
+    </script>
   </body>
 </html>
