@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import IntegrationDemo from '../components/IntegrationDemo.vue';
 import Hex from '../components/Hex.astro';
-import { siPhp, siSymfony, siLaravel, siVuedotjs, siRabbitmq, siPostgresql, siDocker, siGit, siJavascript, siMysql, siLinux, siNginx, siPython } from 'simple-icons';
+import { siGithub, siPhp, siSymfony, siLaravel, siVuedotjs, siRabbitmq, siPostgresql, siDocker, siGit, siJavascript, siMysql, siLinux, siNginx, siPython } from 'simple-icons';
 
 const email = 'canetarn05@gmail.com';
 const cv = '/CV_Arnau_Canet.pdf';
@@ -17,9 +17,9 @@ const stack = [
 ];
 
 const work = [
-  { t: 'Validador inteligente de documentos', d: 'Integré en la plataforma el análisis y la verificación automática de documentos mediante LLM: diseño de la integración, backend en Symfony y comunicación con el microservicio a través de RabbitMQ.', tags: ['Symfony', 'RabbitMQ', 'LLM'] },
-  { t: 'Chatbot conversacional interno', d: 'Integré el chatbot en la plataforma por HTTP y diseñé la gestión de sesiones de conversación. También desarrollé el componente de chat en Vue.js: interfaz redimensionable y descarga de la conversación en Word.', tags: ['Symfony', 'HTTP', 'Vue.js'] },
-  { t: 'Sistema de créditos y tokens', d: 'Participé en el sistema que controla el consumo de IA de cada cliente: consumidores de RabbitMQ, planes de pruebas de QA, depuración en Symfony y Doctrine, y documentación técnica.', tags: ['RabbitMQ', 'Doctrine', 'QA'] },
+  { t: 'Validador inteligente de documentos', what: 'Analiza y verifica documentos automáticamente con un LLM.', mine: 'Diseñé la integración entre Symfony y el microservicio de IA, gestionando la comunicación mediante RabbitMQ y el procesamiento de las respuestas dentro de la plataforma.', tags: ['Symfony', 'RabbitMQ', 'DDD hexagonal', 'LLM'] },
+  { t: 'Chatbot conversacional interno', what: 'Asistente con LLM para atención y gestión interna.', mine: 'Integré el chatbot en Symfony por HTTP, diseñé la gestión de sesiones de conversación y desarrollé el componente de chat en Vue.js, con interfaz redimensionable y descarga de la conversación en Word.', tags: ['Symfony', 'HTTP', 'Vue.js', 'LLM'] },
+  { t: 'Sistema de créditos y tokens', what: 'Controla el consumo de IA de cada cliente de la plataforma.', mine: 'Definí consumidores de RabbitMQ, redacté planes de pruebas de QA, depuré errores en Symfony y Doctrine y documenté las funcionalidades.', tags: ['RabbitMQ', 'Doctrine', 'QA'] },
 ];
 
 const experience = [
@@ -35,8 +35,23 @@ const education = [
   { title: 'CFGM Sistemas Microinformáticos y Redes (SMX)', where: 'IES Bernat el Ferrer' },
 ];
 
+const site = 'https://arnaucanet.github.io/';
+const ogImage = 'https://arnaucanet.github.io/og-image.png';
 const title = 'Arnau Canet Català · Backend & AI Integration Developer';
-const description = 'Desarrollador backend en PHP y Symfony que integra productos de inteligencia artificial en plataformas empresariales.';
+const description = 'Desarrollador backend especializado en PHP/Symfony e integración de IA en aplicaciones empresariales.';
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Arnau Canet Català',
+  url: 'https://arnaucanet.github.io/',
+  jobTitle: 'Backend & AI Integration Developer',
+  email: 'mailto:canetarn05@gmail.com',
+  address: { '@type': 'PostalAddress', addressLocality: 'Barcelona', addressCountry: 'ES' },
+  knowsAbout: ['PHP', 'Symfony', 'Laravel', 'RabbitMQ', 'Vue.js', 'DDD hexagonal', 'Integración de LLMs'],
+  sameAs: ['https://www.linkedin.com/in/arnau-canet', 'https://github.com/arnaucanet'],
+};
+const ghIcon = siGithub.path;
+const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z';
 ---
 <!doctype html>
 <html lang="es">
@@ -48,8 +63,18 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://arnaucanet.github.io/" />
-    <meta name="theme-color" content="#0A0A0B" />
+    <meta property="og:url" content={site} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="canonical" href={site} />
+    <meta name="theme-color" content="#0C0F0E" />
+    <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="min-h-screen bg-bg text-ink">
@@ -61,15 +86,35 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
           <Hex size={22} filled class="text-accent" />
           Arnau Canet
         </a>
-        <nav class="flex items-center gap-1 text-sm sm:gap-2">
-          <a class="hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#trabajo">Trabajo</a>
-          <a class="hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#sobre-mi">Sobre mí</a>
-          <a class="hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#contacto">Contacto</a>
-          <a href={cv} target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 font-semibold text-on-accent hover:brightness-110">
+        <nav class="flex items-center gap-1 text-sm sm:gap-2" aria-label="Principal">
+          <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#trabajo">Trabajo</a>
+          <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#sobre-mi">Sobre mí</a>
+          <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#contacto">Contacto</a>
+          <a href={github} target="_blank" rel="noopener" aria-label="GitHub" class="hidden rounded-md p-2 text-muted hover:text-ink sm:inline-flex">
+            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px] fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
+          </a>
+          <a href={linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" class="hidden rounded-md p-2 text-muted hover:text-ink sm:inline-flex">
+            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px] fill-current" aria-hidden="true"><path d={liPath} /></svg>
+          </a>
+          <a href={cv} target="_blank" rel="noopener" class="ml-1 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 font-semibold text-on-accent transition hover:brightness-110">
             <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
             CV
           </a>
+          <button id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú" class="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 sm:hidden">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path class="menu-open" d="M4 7h16M4 12h16M4 17h16"/><path class="menu-close hidden" d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
         </nav>
+      </div>
+      <div id="mobile-menu" class="hidden border-t border-white/[0.06] sm:hidden">
+        <div class="mx-auto flex max-w-6xl flex-col px-5 py-3 text-base">
+          <a class="nav-link py-3 text-muted" href="#trabajo">Trabajo</a>
+          <a class="nav-link py-3 text-muted" href="#sobre-mi">Sobre mí</a>
+          <a class="nav-link py-3 text-muted" href="#contacto">Contacto</a>
+          <div class="mt-2 flex gap-5 border-t border-white/[0.06] pt-4 pb-2">
+            <a href={github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-muted"><svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true"><path d={ghIcon} /></svg>GitHub</a>
+            <a href={linkedin} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-muted"><svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true"><path d={liPath} /></svg>LinkedIn</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -86,12 +131,16 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
               Hago que la IA funcione dentro del producto.
             </h1>
             <p class="mt-7 max-w-[32rem] text-lg leading-relaxed text-muted">
-              Trabajo con PHP y Symfony. En itbid integré en la plataforma, en solitario,
-              dos productos basados en LLM: un validador de documentos y un chatbot interno.
+              Desarrollador backend especializado en PHP/Symfony e integración de IA en aplicaciones empresariales.
+              En itbid integré en solitario dos productos basados en LLM: un validador de documentos y un chatbot interno.
             </p>
             <div class="mt-9 flex flex-wrap items-center gap-4">
-              <a href="#trabajo" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-bg hover:bg-white">Ver mi trabajo</a>
-              <a href="#contacto" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold hover:border-white/35 hover:bg-white/5">Hablemos</a>
+              <a href="#trabajo" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-bg transition hover:bg-white">Ver mi trabajo</a>
+              <a href={github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold transition hover:border-white/35 hover:bg-white/5">
+                <svg viewBox="0 0 24 24" class="h-[18px] w-[18px] fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
+                GitHub
+              </a>
+              <a href="#contacto" class="px-2 py-3 font-semibold text-muted underline decoration-white/20 underline-offset-4 transition hover:text-ink hover:decoration-accent">Hablemos</a>
             </div>
             <p class="mt-10 flex items-center gap-2.5 text-sm text-muted">
               <span class="status-dot h-2 w-2 rounded-full bg-accent"></span>
@@ -100,7 +149,7 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
           </div>
           <div>
             <IntegrationDemo client:idle />
-            <p class="mt-3 text-sm text-muted">Así viaja una petición en cada producto. Mi parte: la plataforma.</p>
+            <p class="mt-3 text-sm text-muted">Pulsa cada pieza para ver qué hice en ella.</p>
           </div>
         </div>
         <a href="#trabajo" aria-label="Ir a mi trabajo" class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-muted hover:text-ink">
@@ -122,13 +171,15 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
               </p>
               <div class="mt-12 divide-y divide-line border-y border-line">
                 {work.map((w) => (
-                  <article class="grid gap-3 py-8 sm:grid-cols-[2.5rem_1fr]">
-                    <Hex size={26} class="mt-0.5 text-accent" />
+                  <article class="work-row group grid gap-3 py-8 sm:grid-cols-[2.5rem_1fr]">
+                    <Hex size={26} class="mt-0.5 text-accent transition-transform duration-300 group-hover:rotate-[30deg]" />
                     <div>
                       <h3 class="text-lg font-bold">{w.t}</h3>
-                      <p class="mt-2 max-w-[42rem] leading-relaxed text-muted">{w.d}</p>
+                      <p class="mt-1 text-ink/80">{w.what}</p>
+                      <p class="mt-4 text-sm font-semibold text-accent">Mi responsabilidad</p>
+                      <p class="mt-1 max-w-[42rem] leading-relaxed text-muted">{w.mine}</p>
                       <ul class="mt-4 flex flex-wrap gap-2 font-mono text-xs text-ink/75">
-                        {w.tags.map((t) => <li class="rounded-md border border-line bg-surface px-2 py-1">{t}</li>)}
+                        {w.tags.map((t) => <li class="chip rounded-md border border-line bg-surface px-2 py-1">{t}</li>)}
                       </ul>
                     </div>
                   </article>
@@ -140,7 +191,8 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
 
           <div class="mt-24 grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-16">
             <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Proyectos</h2>
-            <article class="ticket max-w-[44rem] overflow-hidden rounded-2xl bg-accent text-on-accent">
+            <div>
+            <article class="ticket lift max-w-[44rem] overflow-hidden rounded-2xl bg-accent text-on-accent">
               <div class="grid sm:grid-cols-[1fr_10rem]">
                 <div class="p-7 sm:p-9">
                   <p class="text-sm font-medium opacity-70">Proyecto final de DAW</p>
@@ -154,6 +206,11 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
                 </ul>
               </div>
             </article>
+            <a href={github} target="_blank" rel="noopener" class="group mt-6 inline-flex items-center gap-2.5 font-semibold text-ink/90 hover:text-ink">
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
+              <span class="underline decoration-white/20 underline-offset-4 group-hover:decoration-accent">Ver todos mis repositorios en GitHub</span>
+            </a>
+            </div>
           </div>
         </div>
       </section>
@@ -172,8 +229,8 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
               <ol class="relative mt-6 max-w-[44rem]">
                 <span class="absolute bottom-3 left-[9px] top-3 w-px bg-line" aria-hidden="true"></span>
                 {experience.map((e, i) => (
-                  <li class="relative pb-10 pl-10 last:pb-0">
-                    <Hex size={20} filled={i === 0} class={`absolute left-0 top-1 bg-bg ${i === 0 ? 'text-accent' : 'text-muted'}`} />
+                  <li class="group relative pb-10 pl-10 last:pb-0">
+                    <Hex size={20} filled={i === 0} class={`absolute left-0 top-1 bg-bg transition-colors ${i === 0 ? 'text-accent' : 'text-muted group-hover:text-accent'}`} />
                     <p class="text-sm text-muted">{e.dates}</p>
                     <h4 class="mt-1 font-bold">{e.role}</h4>
                     <p class="text-sm text-muted">{e.org}, {e.place}</p>
@@ -189,7 +246,7 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
                     <dt class="text-sm text-muted">{g.group}</dt>
                     <dd class="mt-3 flex flex-wrap gap-2">
                       {g.items.map(([name, icon]) => (
-                        <span class="inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface px-2.5 py-1 text-sm">
+                        <span class="chip inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface px-2.5 py-1 text-sm text-ink/85">
                           {icon && <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current opacity-75" aria-hidden="true"><path d={icon.path} /></svg>}
                           {name}
                         </span>
@@ -237,10 +294,39 @@ const description = 'Desarrollador backend en PHP y Symfony que integra producto
     </footer>
 
     <script>
+      // Flecha de scroll: se oculta al bajar
       const scrollIndicator = document.querySelector('.scroll-indicator');
       const toggleIndicator = () => scrollIndicator?.classList.toggle('is-hidden', window.scrollY > 50);
       window.addEventListener('scroll', toggleIndicator, { passive: true });
       toggleIndicator();
+
+      // Menú móvil
+      const menuBtn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const setMenu = (open) => {
+        menu?.classList.toggle('hidden', !open);
+        menuBtn?.setAttribute('aria-expanded', String(open));
+        menuBtn?.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+        menuBtn?.querySelector('.menu-open')?.classList.toggle('hidden', open);
+        menuBtn?.querySelector('.menu-close')?.classList.toggle('hidden', !open);
+      };
+      menuBtn?.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+      menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+      // aria-current en la navegación según la sección visible
+      const links = [...document.querySelectorAll('.nav-link')];
+      const sections = ['trabajo', 'sobre-mi', 'contacto'].map((id) => document.getElementById(id)).filter(Boolean);
+      const setCurrent = (id) => links.forEach((l) => {
+        if (l.getAttribute('href') === `#${id}`) l.setAttribute('aria-current', 'true');
+        else l.removeAttribute('aria-current');
+      });
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setCurrent(visible.target.id);
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.25, 0.5] });
+      sections.forEach((s) => observer.observe(s));
+      window.addEventListener('scroll', () => { if (window.scrollY < 200) setCurrent(''); }, { passive: true });
     </script>
   </body>
 </html>
