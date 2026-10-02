@@ -1,20 +1,22 @@
 @import "tailwindcss";
-@import "@fontsource-variable/schibsted-grotesk";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
 
 :root {
-  --bg: #0F1513;
-  --surface: #161E1C;
-  --ink: #E7EDEA;
-  --muted: #95A39D;
-  --line: #24302C;
-  --accent: #F2B544;
-  --signal: #F2B544;
-  --on-accent: #1E1503;
+  --bg: #0A0A0B;
+  --surface: #111113;
+  --ink: #EDEDEF;
+  --muted: #A1A1AA;
+  --line: #1E1E22;
+  --accent: #22C38E;
+  --signal: #22C38E;
+  --on-accent: #04130D;
   color-scheme: dark;
 }
 
 @theme {
-  --font-sans: "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
@@ -26,28 +28,18 @@
 }
 
 @layer base {
-html { background: var(--bg); color: var(--ink); }
-body { font-family: var(--font-sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-a { color: inherit; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-::selection { background: var(--accent); color: var(--on-accent); }
+  html { background: var(--bg); color: var(--ink); scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { font-family: var(--font-sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  ::selection { background: var(--accent); color: var(--on-accent); }
 }
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-.blueprint {
-  background-color: #0B100F;
-  background-image:
-    radial-gradient(60rem 30rem at 85% -10%, rgba(242,181,68,.08), transparent 60%),
-    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
-  background-size: auto, 96px 96px, 96px 96px, 24px 24px, 24px 24px;
-  background-position: 0 0, -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-  color: var(--ink);
-}
+.glow { text-shadow: 0 0 28px color-mix(in srgb, var(--accent) 35%, transparent); }
 .ticket {
   --notch: 14px;
   -webkit-mask: radial-gradient(circle var(--notch) at left 50%, #0000 98%, #000) left / 51% 100% no-repeat,
@@ -55,3 +47,5 @@ a { color: inherit; }
           mask: radial-gradient(circle var(--notch) at left 50%, #0000 98%, #000) left / 51% 100% no-repeat,
                 radial-gradient(circle var(--notch) at right 50%, #0000 98%, #000) right / 51% 100% no-repeat;
 }
+@keyframes pulse-dot { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 50% { box-shadow: 0 0 0 5px transparent; } }
+.status-dot { animation: pulse-dot 2.4s ease-in-out infinite; }

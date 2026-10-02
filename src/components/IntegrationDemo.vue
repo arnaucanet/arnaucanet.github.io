@@ -48,7 +48,7 @@ const HEX = '32,2 58,17 58,47 32,62 6,47 6,17';
       <div v-for="(n, i) in nodes" :key="n.name + i" class="relative flex flex-col items-center text-center">
         <div class="relative h-16 w-16">
           <svg viewBox="0 0 64 64" class="absolute inset-0 h-full w-full" aria-hidden="true">
-            <polygon :points="HEX" :fill="n.mine ? 'rgba(242,181,68,.14)' : '#141B19'"
+            <polygon :points="HEX" :fill="n.mine ? 'color-mix(in srgb, var(--accent) 14%, transparent)' : '#0F0F11'"
               :stroke="n.mine ? 'var(--accent)' : 'rgba(255,255,255,.3)'" :stroke-width="n.mine ? 2 : 1.4" stroke-linejoin="round" />
           </svg>
           <svg viewBox="0 0 24 24" class="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2" :class="n.mine ? 'text-[var(--accent)]' : 'text-white/85'" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -74,6 +74,6 @@ const HEX = '32,2 58,17 58,47 32,62 6,47 6,17';
 </template>
 
 <style scoped>
-.demo { background: rgba(22, 30, 28, .85); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 40px 80px -40px rgba(0,0,0,.8); backdrop-filter: blur(4px); }
+.demo { background: var(--surface); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 40px 80px -40px rgba(0,0,0,.8); backdrop-filter: blur(4px); }
 .rail { height: 0; border-top: 1.5px dashed rgba(255,255,255,.22); }
 </style>
