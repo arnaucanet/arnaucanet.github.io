@@ -12,17 +12,19 @@ const scenarios = {
       'La plataforma recibe el resultado y lo muestra al usuario.',
     ],
     result: 'Documento verificado',
+    link: { name: 'RabbitMQ', detail: 'Cola de mensajes', icon: 'queue' },
   },
   chatbot: {
     label: 'Chatbot interno',
     action: 'Enviar una pregunta',
     steps: [
       'La plataforma añade la pregunta a la sesión de conversación.',
-      'RabbitMQ entrega el mensaje con el historial al microservicio.',
+      'La plataforma llama por HTTP al microservicio con la pregunta y el historial.',
       'El LLM genera la respuesta usando la memoria de la conversación.',
       'La plataforma guarda la respuesta en la sesión y la muestra.',
     ],
     result: 'Respuesta entregada',
+    link: { name: 'API HTTP', detail: 'Petición y respuesta', icon: 'http' },
   },
 };
 
@@ -48,11 +50,11 @@ function run() {
 function pick(key) { clear(); current.value = key; step.value = -1; }
 onBeforeUnmount(clear);
 
-const nodes = [
-  { name: 'Plataforma', detail: 'PHP y Symfony', mine: true },
-  { name: 'RabbitMQ', detail: 'Cola de mensajes', mine: false },
-  { name: 'Microservicio de IA', detail: 'LLM', mine: false },
-];
+const nodes = computed(() => [
+  { name: 'Plataforma', detail: 'PHP y Symfony', mine: true, icon: 'platform' },
+  { ...scenario.value.link, mine: false },
+  { name: 'Microservicio de IA', detail: 'LLM', mine: false, icon: 'ai' },
+]);
 const active = (i) => step.value >= 0 && step.value < 4 && dotAt.value === i;
 </script>
 
@@ -79,8 +81,9 @@ const active = (i) => step.value >= 0 && step.value < 4 && dotAt.value === i;
       <div v-for="(n, i) in nodes" :key="n.name" class="relative flex flex-col items-center text-center">
         <div class="grid h-14 w-14 place-items-center rounded-xl border-2 bg-surface transition-colors"
           :class="[n.mine ? 'border-accent' : 'border-line', active(i) ? 'bg-signal/15' : '']">
-          <svg v-if="i===0" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg>
-          <svg v-else-if="i===1" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="4" height="12" rx="1"/><rect x="10" y="6" width="4" height="12" rx="1"/><rect x="17" y="6" width="4" height="12" rx="1"/></svg>
+          <svg v-if="n.icon==='platform'" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg>
+          <svg v-else-if="n.icon==='queue'" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="4" height="12" rx="1"/><rect x="10" y="6" width="4" height="12" rx="1"/><rect x="17" y="6" width="4" height="12" rx="1"/></svg>
+          <svg v-else-if="n.icon==='http'" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9h14l-3-3M20 15H6l3 3"/></svg>
           <svg v-else viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.5"/></svg>
         </div>
         <p class="mt-3 text-sm font-semibold leading-tight sm:text-base">{{ n.name }}</p>
