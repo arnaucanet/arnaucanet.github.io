@@ -5,31 +5,31 @@ const scenarios = {
   validador: {
     label: 'Validador de documentos', short: 'Validador',
     steps: [
-      'La plataforma publica el documento en la cola.',
-      'RabbitMQ entrega el mensaje al microservicio de IA.',
-      'El LLM analiza el documento y verifica sus datos.',
-      'La plataforma recibe el resultado y lo muestra al usuario.',
+      'La plataforma publica el documento.',
+      'RabbitMQ lo entrega al microservicio.',
+      'El LLM lo analiza y verifica.',
+      'La plataforma muestra el resultado.',
     ],
     link: { name: 'RabbitMQ', detail: 'Cola de mensajes', icon: 'queue' },
     info: [
-      'Diseñé la integración en Symfony con arquitectura DDD hexagonal: la plataforma publica el documento, recoge el resultado del análisis y se lo muestra al usuario.',
-      'Es el canal entre la plataforma y la IA. Desde la plataforma publicaba los mensajes con los documentos y gestionaba la recepción de los resultados.',
-      'Lo desarrollaba un compañero. El LLM analiza el documento y verifica sus datos; mi trabajo era que esa respuesta encajara dentro del producto.',
+      'Integración en Symfony con DDD hexagonal: publica el documento, recoge el resultado y lo muestra.',
+      'Canal entre plataforma e IA: publicación de documentos y recepción de resultados.',
+      'Desarrollado por un compañero. Mi parte: integrar su respuesta en el producto.',
     ],
   },
   chatbot: {
     label: 'Chatbot interno', short: 'Chatbot',
     steps: [
-      'La plataforma añade la pregunta a la sesión de conversación.',
-      'La plataforma llama por HTTP al microservicio con la pregunta y el contexto de la sesión.',
-      'El microservicio genera la respuesta con el LLM.',
-      'La plataforma guarda la respuesta en la sesión y la muestra.',
+      'La plataforma añade la pregunta a la sesión.',
+      'La envía por HTTP con el contexto.',
+      'El LLM genera la respuesta.',
+      'La plataforma la guarda y la muestra.',
     ],
     link: { name: 'API HTTP', detail: 'Petición y respuesta', icon: 'http' },
     info: [
-      'Integré el chatbot en Symfony, diseñé la gestión de sesiones de conversación y desarrollé el componente de chat en Vue.js.',
-      'La plataforma llama al microservicio por HTTP con la pregunta y el contexto de la sesión, y guarda la respuesta que recibe.',
-      'Lo desarrollaba un compañero. Genera la respuesta con el LLM; mi trabajo era integrarla en la plataforma.',
+      'Integración en Symfony, gestión de sesiones y componente de chat en Vue.js.',
+      'Envía la pregunta con el contexto de la sesión y guarda la respuesta.',
+      'Desarrollado por un compañero. Mi parte: integrar sus respuestas en el producto.',
     ],
   },
 };
@@ -40,7 +40,7 @@ const scenario = computed(() => scenarios[current.value]);
 const nodes = computed(() => [
   { name: 'Plataforma', detail: 'PHP y Symfony', mine: true, icon: 'platform' },
   { ...scenario.value.link, mine: false },
-  { name: 'Microservicio de IA', detail: 'LLM', mine: false, icon: 'ai' },
+  { name: 'Servicio de IA', detail: 'LLM', mine: false, icon: 'ai' },
 ]);
 const HEX = '32,2 58,17 58,47 32,62 6,47 6,17';
 function pickScenario(key) { current.value = key; }
