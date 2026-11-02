@@ -1,19 +1,26 @@
 ---
 import '../styles/global.css';
 import IntegrationDemo from '../components/IntegrationDemo.vue';
+import RequestTrace from '../components/RequestTrace.vue';
 import Hex from '../components/Hex.astro';
-import { siGithub, siPhp, siSymfony, siLaravel, siVuedotjs, siRabbitmq, siPostgresql, siDocker, siGit, siJavascript, siMysql, siLinux, siNginx, siPython } from 'simple-icons';
+import { siGithub, siPhp, siSymfony, siLaravel, siVuedotjs, siRabbitmq, siPostgresql, siDocker, siGit, siJavascript, siMysql, siLinux, siNginx, siPython, siWireguard, siThreedotjs } from 'simple-icons';
 
 const email = 'canetarn05@gmail.com';
 const cv = '/CV_Arnau_Canet.pdf';
 const linkedin = 'https://www.linkedin.com/in/arnau-canet';
 const github = 'https://github.com/arnaucanet';
 
+const now = [
+  { t: 'Responsable de IT y sistemas en Klosions TIC', when: 'Desde oct 2026', d: 'Llevo los sistemas de los clientes de la empresa: correo y Microsoft 365, dominios y hosting, redes y accesos por VPN.', tags: ['Microsoft 365', 'Dominios y hosting', 'WireGuard', 'Redes'] },
+  { t: 'Herramientas internas de sistemas', when: 'Klosions TIC', d: 'Inventario de dominios, hostings, VPS y correo a través de la API del proveedor. Es de solo lectura: se ve todo lo contratado sin riesgo de tocar nada.', tags: ['PHP', 'Docker', 'Solo lectura'] },
+  { t: 'Especialización en IA y Big Data', when: '2026 – 2027', d: 'Máster FP para sumar IA y datos a lo que ya sé de sistemas y backend.', tags: ['IA', 'Big Data', 'Python'] },
+];
+
 const stack = [
+  { group: 'Sistemas y redes', items: [['Linux', siLinux], ['Windows Server'], ['Microsoft 365'], ['Redes'], ['WireGuard', siWireguard], ['Nginx', siNginx], ['Docker', siDocker]] },
   { group: 'Backend', items: [['PHP', siPhp], ['Symfony', siSymfony], ['Laravel', siLaravel], ['RabbitMQ', siRabbitmq], ['APIs REST'], ['DDD hexagonal'], ['Tests unitarios']] },
-  { group: 'IA y datos', items: [['Integración de LLMs'], ['PostgreSQL', siPostgresql], ['MySQL', siMysql], ['Python (en formación)', siPython]] },
-  { group: 'Frontend', items: [['JavaScript', siJavascript], ['Vue.js', siVuedotjs], ['HTML y CSS'], ['Twig']] },
-  { group: 'DevOps y sistemas', items: [['Docker', siDocker], ['Git', siGit], ['Linux', siLinux], ['Nginx', siNginx], ['Redes']] },
+  { group: 'IA, datos y cloud', items: [['Integración de LLMs'], ['PostgreSQL', siPostgresql], ['MySQL', siMysql], ['Python (en formación)', siPython], ['AWS (aprendiendo)']] },
+  { group: 'Frontend', items: [['JavaScript', siJavascript], ['Vue.js', siVuedotjs], ['Three.js', siThreedotjs], ['HTML y CSS'], ['Twig'], ['Git', siGit]] },
 ];
 
 const work = [
@@ -21,6 +28,22 @@ const work = [
   { t: 'Chatbot conversacional interno', d: 'Integración por HTTP, gestión de sesiones de conversación y componente de chat en Vue.js.', tags: ['Symfony', 'HTTP', 'Vue.js'] },
   { t: 'Sistema de créditos y tokens', d: 'Consumidores de RabbitMQ, planes de QA, depuración en Symfony y Doctrine, y documentación.', tags: ['RabbitMQ', 'Doctrine', 'QA'] },
 ];
+
+const featured = {
+  name: 'Request Journey 3D', kind: 'Proyecto personal', date: 'Oct 2026',
+  summary: 'Qué pasa desde que escribes una dirección hasta que responde la base de datos, visto en 3D sobre una arquitectura típica de AWS.',
+  did: 'No es una animación pregrabada: un simulador calcula qué le pasa a cada petición en cada equipo y la escena solo reproduce el resultado, con unas DevTools como las de Chrome.',
+  points: [
+    '7 escenarios guiados con averías típicas: N+1, Redis caído, 502, CORS y 429.',
+    'Cada escenario se ejecuta también en los tests, que comprueban lo que dicen sus subtítulos.',
+    'Simulador y escena separados en capas, con formato, lint, tests y despliegue en GitHub Actions.',
+  ],
+  tech: ['Three.js', 'JavaScript', 'Vite', 'Vitest', 'GitHub Actions'],
+  video: '/projects/request-journey.mp4',
+  poster: '/projects/request-journey.jpg',
+  demo: 'https://arnaucanet.github.io/request-journey/',
+  code: 'https://github.com/arnaucanet/request-journey',
+};
 
 const projects = [
   {
@@ -54,6 +77,7 @@ const projects = [
 ];
 
 const experience = [
+  { role: 'Responsable de IT y sistemas', org: 'Klosions TIC', dates: 'Oct 2026 – actualidad', text: 'Sistemas de los clientes, incidencias de correo y Microsoft 365, dominios, hosting y redes, y herramientas internas.' },
   { role: 'Backend & AI Integration Developer', org: 'itbid', place: 'Barcelona, híbrido', dates: 'Oct 2025 – Jul 2026', text: 'Integración de dos productos con LLM, sistema de créditos y frontend del chat.' },
   { role: 'Técnico de sistemas', org: 'ADTEL Sistemas de Telecomunicación', place: 'Molins de Rei', dates: 'Jul 2024 – May 2025', text: 'Servidores Linux y Windows Server, redes, monitorización y backups.' },
   { role: 'Técnico informático en prácticas', org: 'Ajuntament de Sant Feliu de Llobregat', place: 'Sant Feliu de Llobregat', dates: 'Nov 2022 – May 2023', text: 'Soporte a usuarios, equipos y redes.' },
@@ -68,17 +92,18 @@ const education = [
 
 const site = 'https://arnaucanet.github.io/';
 const ogImage = 'https://arnaucanet.github.io/og-image.png';
-const title = 'Arnau Canet Català · Backend & AI Integration Developer';
-const description = 'Desarrollador backend especializado en PHP/Symfony e integración de IA en aplicaciones empresariales.';
+const title = 'Arnau Canet Català · Sistemas, backend e IA';
+const description = 'Responsable de IT y sistemas en Klosions TIC, con experiencia en backend PHP/Symfony e integración de LLM. Especializándome en IA y Big Data.';
 const personLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Arnau Canet Català',
   url: 'https://arnaucanet.github.io/',
-  jobTitle: 'Backend & AI Integration Developer',
+  jobTitle: 'Responsable de IT y sistemas',
+  worksFor: { '@type': 'Organization', name: 'Klosions TIC' },
   email: 'mailto:canetarn05@gmail.com',
   address: { '@type': 'PostalAddress', addressLocality: 'Barcelona', addressCountry: 'ES' },
-  knowsAbout: ['PHP', 'Symfony', 'Laravel', 'RabbitMQ', 'Vue.js', 'DDD hexagonal', 'Integración de LLMs'],
+  knowsAbout: ['Administración de sistemas', 'Redes', 'Microsoft 365', 'PHP', 'Symfony', 'Laravel', 'RabbitMQ', 'Vue.js', 'Integración de LLMs', 'AWS'],
   sameAs: ['https://www.linkedin.com/in/arnau-canet', 'https://github.com/arnaucanet'],
 };
 const ghIcon = siGithub.path;
@@ -118,8 +143,9 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
           Arnau Canet
         </a>
         <nav class="flex items-center gap-1 text-sm sm:gap-2" aria-label="Principal">
-          <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#trabajo">Trabajo</a>
+          <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#ahora">Ahora</a>
           <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#proyectos">Proyectos</a>
+          <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#itbid">IA en itbid</a>
           <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#sobre-mi">Sobre mí</a>
           <a class="nav-link hidden rounded-md px-3 py-2 text-muted hover:text-ink sm:inline" href="#contacto">Contacto</a>
           <a href={github} target="_blank" rel="noopener" aria-label="GitHub" class="hidden rounded-md p-2 text-muted hover:text-ink sm:inline-flex">
@@ -139,8 +165,9 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
       </div>
       <div id="mobile-menu" class="hidden border-t border-white/[0.06] sm:hidden">
         <div class="mx-auto flex max-w-6xl flex-col px-5 py-3 text-base">
-          <a class="nav-link py-3 text-muted" href="#trabajo">Trabajo</a>
+          <a class="nav-link py-3 text-muted" href="#ahora">Ahora</a>
           <a class="nav-link py-3 text-muted" href="#proyectos">Proyectos</a>
+          <a class="nav-link py-3 text-muted" href="#itbid">IA en itbid</a>
           <a class="nav-link py-3 text-muted" href="#sobre-mi">Sobre mí</a>
           <a class="nav-link py-3 text-muted" href="#contacto">Contacto</a>
           <div class="mt-2 flex gap-5 border-t border-white/[0.06] pt-4 pb-2">
@@ -158,17 +185,17 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
           <div>
             <p class="flex items-center gap-2 text-muted">
               <Hex size={14} class="text-accent" />
-              Backend & AI Integration Developer
+              Sistemas · Backend · IA
             </p>
             <h1 class="mt-6 text-[2.75rem] font-extrabold leading-[1.0] tracking-[-0.035em] sm:text-[4.4rem]">
-              Hago que la IA funcione dentro del producto.
+              Sé qué pasa entre el clic y la respuesta.
             </h1>
             <p class="mt-7 max-w-[32rem] text-lg leading-relaxed text-muted">
-              Backend en PHP y Symfony. En itbid integré en solitario dos productos con LLM:
-              un validador de documentos y un chatbot.
+              Llevo IT y sistemas en Klosions TIC. Antes, en itbid, integré en solitario dos productos
+              con LLM en Symfony. Ahora me especializo en IA y Big Data.
             </p>
             <div class="mt-9 flex flex-wrap items-center gap-4">
-              <a href="#trabajo" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-bg transition hover:bg-white">Ver mi trabajo</a>
+              <a href="#proyectos" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-bg transition hover:bg-white">Ver proyectos</a>
               <a href={github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold transition hover:border-white/35 hover:bg-white/5">
                 <svg viewBox="0 0 24 24" class="h-[18px] w-[18px] fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
                 GitHub
@@ -177,49 +204,44 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
             </div>
             <p class="mt-10 flex items-center gap-2.5 text-sm text-muted">
               <span class="status-dot h-2 w-2 rounded-full bg-accent"></span>
-              Disponible ahora en Barcelona
+              Barcelona · IT y sistemas en Klosions TIC
             </p>
           </div>
           <div>
-            <IntegrationDemo client:idle />
-            <p class="mt-3 text-sm text-muted">Pulsa cada pieza para ver mi parte.</p>
+            <RequestTrace client:idle />
+            <p class="mt-3 text-sm text-muted">Elige qué le pasa a la petición.</p>
           </div>
         </div>
-        <a href="#trabajo" aria-label="Ir a mi trabajo" class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-muted hover:text-ink">
+        <a href="#ahora" aria-label="Ir a lo que hago ahora" class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-muted hover:text-ink">
           <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </a>
       </section>
 
-      <section id="trabajo" class="border-t border-line">
+      <section id="ahora" class="border-t border-line">
         <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8">
           <div class="grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-16">
             <div>
-              <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Mi trabajo en itbid</h2>
-              <p class="mt-2 text-muted">Oct 2025 – Jul 2026</p>
+              <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Ahora</h2>
+              <p class="mt-2 text-muted">Noviembre de 2026</p>
             </div>
-            <div>
-              <p class="max-w-[44rem] text-xl leading-relaxed">
-                Plataforma de compras para empresas. Un compañero desarrollaba los microservicios de IA;{' '}
-                <span class="text-muted">yo los integré en el producto, en solitario.</span>
-              </p>
-              <div class="mt-10 divide-y divide-line border-y border-line">
-                {work.map((w) => (
-                  <article class="work-row group grid gap-3 py-6 sm:grid-cols-[2.5rem_1fr]">
-                    <Hex size={26} class="mt-0.5 text-accent transition-transform duration-300 group-hover:rotate-[30deg]" />
-                    <div>
-                      <h3 class="text-lg font-bold">{w.t}</h3>
-                      <p class="mt-1 max-w-[42rem] leading-relaxed text-muted">{w.d}</p>
-                      <ul class="mt-3 flex flex-wrap gap-2 font-mono text-xs text-ink/75">
-                        {w.tags.map((t) => <li class="chip rounded-md border border-line bg-surface px-2 py-1">{t}</li>)}
-                      </ul>
+            <div class="divide-y divide-line border-y border-line">
+              {now.map((n) => (
+                <article class="work-row group grid gap-3 py-6 sm:grid-cols-[2.5rem_1fr]">
+                  <Hex size={26} class="mt-0.5 text-accent transition-transform duration-300 group-hover:rotate-[30deg]" />
+                  <div>
+                    <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+                      <h3 class="text-lg font-bold">{n.t}</h3>
+                      <p class="text-sm text-muted">{n.when}</p>
                     </div>
-                  </article>
-                ))}
-              </div>
-              <p class="mt-6 text-sm text-muted">DDD hexagonal, tests unitarios, PostgreSQL y Docker. Agile con ClickUp.</p>
+                    <p class="mt-1 max-w-[42rem] leading-relaxed text-muted">{n.d}</p>
+                    <ul class="mt-3 flex flex-wrap gap-2 font-mono text-xs text-ink/75">
+                      {n.tags.map((t) => <li class="chip rounded-md border border-line bg-surface px-2 py-1">{t}</li>)}
+                    </ul>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
-
         </div>
       </section>
 
@@ -236,7 +258,44 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
             </a>
           </div>
 
-          <div class="mt-10 grid gap-5 md:grid-cols-2">
+          <article class="mt-10 overflow-hidden rounded-2xl border border-accent/40 bg-surface">
+            <a href={featured.demo} target="_blank" rel="noopener" class="group block overflow-hidden border-b border-line bg-bg">
+              <video id="featured-video" src={featured.video} poster={featured.poster} width="960" height="540" autoplay muted loop playsinline aria-label="Request Journey: una petición recorre en 3D el DNS, la CDN, el balanceador, las API, Redis y la base de datos, y la cascada de DevTools se va rellenando debajo." class="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"></video>
+            </a>
+            <div class="grid gap-x-12 gap-y-6 p-6 sm:p-8 lg:grid-cols-2">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+                  <span class="font-semibold text-accent">Destacado · {featured.kind}</span>
+                  <span class="text-muted">{featured.date}</span>
+                </div>
+                <h3 class="mt-3 text-3xl font-extrabold tracking-tight">{featured.name}</h3>
+                <p class="mt-3 text-ink/85">{featured.summary}</p>
+                <p class="mt-3 text-[0.95rem] leading-relaxed text-muted">{featured.did}</p>
+              </div>
+              <div class="flex flex-col">
+              <ul class="space-y-2 text-[0.95rem] leading-snug text-muted">
+                {featured.points.map((point) => (
+                  <li class="flex gap-2.5"><Hex size={12} filled class="mt-1.5 shrink-0 text-accent" />{point}</li>
+                ))}
+              </ul>
+              <ul class="mt-5 flex flex-wrap gap-2 font-mono text-xs text-ink/75">
+                {featured.tech.map((t) => <li class="chip rounded-md border border-line bg-bg px-2 py-1">{t}</li>)}
+              </ul>
+              <div class="mt-auto flex flex-wrap gap-3 pt-6">
+                <a href={featured.demo} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-bg transition hover:bg-white">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                  Abrir la demo
+                </a>
+                <a href={featured.code} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold transition hover:border-white/35 hover:bg-white/5">
+                  <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true"><path d={ghIcon} /></svg>
+                  Código
+                </a>
+              </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="mt-5 grid gap-5 md:grid-cols-2">
             {projects.map((p) => (
               <article class={`lift flex flex-col rounded-2xl border bg-surface p-6 ${p.ai ? 'border-accent/40' : 'border-line'}`}>
                 <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
@@ -266,51 +325,71 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
         </div>
       </section>
 
+      <section id="itbid" class="border-t border-line">
+        <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8">
+          <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">IA en producción: itbid</h2>
+          <p class="mt-2 text-muted">Oct 2025 – Jul 2026</p>
+          <div class="mt-8 grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <p class="text-xl leading-relaxed">
+                Plataforma de compras para empresas. Un compañero desarrollaba los microservicios de IA;{' '}
+                <span class="text-muted">yo los integré en el producto, en solitario.</span>
+              </p>
+              <div class="mt-8 divide-y divide-line border-y border-line">
+                {work.map((w) => (
+                  <article class="work-row group grid gap-3 py-6 sm:grid-cols-[2.5rem_1fr]">
+                    <Hex size={26} class="mt-0.5 text-accent transition-transform duration-300 group-hover:rotate-[30deg]" />
+                    <div>
+                      <h3 class="text-lg font-bold">{w.t}</h3>
+                      <p class="mt-1 leading-relaxed text-muted">{w.d}</p>
+                      <ul class="mt-3 flex flex-wrap gap-2 font-mono text-xs text-ink/75">
+                        {w.tags.map((t) => <li class="chip rounded-md border border-line bg-surface px-2 py-1">{t}</li>)}
+                      </ul>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <p class="mt-6 text-sm text-muted">DDD hexagonal, tests unitarios, PostgreSQL y Docker. Agile con ClickUp.</p>
+            </div>
+            <div>
+              <IntegrationDemo client:visible />
+              <p class="mt-3 text-sm text-muted">Pulsa cada pieza para ver mi parte.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="sobre-mi" class="border-t border-line">
         <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-          <div class="grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-16">
-            <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Sobre mí</h2>
-            <div>
-              <p class="max-w-[44rem] text-xl leading-relaxed">
-                Vengo de sistemas: administré servidores y redes en ADTEL y en el Ajuntament de Sant Feliu.{' '}
-                <span class="text-muted">Ahora me especializo en IA y Big Data.</span>
-              </p>
+          <h2 class="text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">Sobre mí</h2>
+          <p class="mt-6 max-w-[52rem] text-xl leading-relaxed">
+            Empecé en sistemas, en ADTEL y en el Ajuntament de Sant Feliu. Pasé a programar backend e IA en itbid
+            y he vuelto a sistemas en Klosions con esa experiencia.{' '}
+            <span class="text-muted">Me gusta entender la cadena entera, desde la red hasta el modelo.</span>
+          </p>
 
-              <h3 class="mt-12 text-lg font-bold">Experiencia</h3>
-              <ol class="relative mt-6 max-w-[44rem]">
+          <div class="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <h3 class="text-lg font-bold">Experiencia</h3>
+              <ol class="relative mt-6">
                 <span class="absolute bottom-3 left-[9px] top-3 w-px bg-line" aria-hidden="true"></span>
                 {experience.map((e, i) => (
                   <li class="group relative pb-8 pl-10 last:pb-0">
                     <Hex size={20} filled={i === 0} class={`absolute left-0 top-1 bg-bg transition-colors ${i === 0 ? 'text-accent' : 'text-muted group-hover:text-accent'}`} />
                     <p class="text-sm text-muted">{e.dates}</p>
                     <h4 class="mt-1 font-bold">{e.role}</h4>
-                    <p class="text-sm text-muted">{e.org}, {e.place}</p>
+                    <p class="text-sm text-muted">{e.place ? `${e.org}, ${e.place}` : e.org}</p>
                     <p class="mt-2 leading-relaxed text-ink/85">{e.text}</p>
                   </li>
                 ))}
               </ol>
+            </div>
 
-              <h3 class="mt-12 text-lg font-bold">Stack</h3>
-              <dl class="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-2">
-                {stack.map((g) => (
-                  <div>
-                    <dt class="text-sm text-muted">{g.group}</dt>
-                    <dd class="mt-3 flex flex-wrap gap-2">
-                      {g.items.map(([name, icon]) => (
-                        <span class="chip inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface px-2.5 py-1 text-sm text-ink/85">
-                          {icon && <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current opacity-75" aria-hidden="true"><path d={icon.path} /></svg>}
-                          {name}
-                        </span>
-                      ))}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              <h3 class="mt-12 text-lg font-bold">Formación</h3>
-              <ul class="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            <div>
+              <h3 class="text-lg font-bold">Formación</h3>
+              <ul class="mt-6 space-y-5">
                 {education.map((e, i) => (
-                  <li class={i === 0 ? 'sm:col-span-2' : ''}>
+                  <li>
                     <h4 class="font-semibold leading-snug">{e.title}</h4>
                     <p class={`mt-1 text-sm ${i === 0 ? 'font-semibold text-accent' : 'text-muted'}`}>{e.where}</p>
                   </li>
@@ -320,9 +399,27 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
                   <p class="mt-1 text-sm text-muted">Certificación de freeCodeCamp</p>
                 </li>
               </ul>
-              <p class="mt-10 text-muted">Idiomas: español y catalán nativos, inglés intermedio.</p>
+              <h3 class="mt-10 text-lg font-bold">Idiomas</h3>
+              <p class="mt-3 text-ink/85">Español y catalán nativos, inglés intermedio.</p>
             </div>
           </div>
+
+          <h3 class="mt-14 text-lg font-bold">Stack</h3>
+          <dl class="mt-6 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+            {stack.map((g) => (
+              <div>
+                <dt class="text-sm text-muted">{g.group}</dt>
+                <dd class="mt-3 flex flex-wrap gap-2">
+                  {g.items.map(([name, icon]) => (
+                    <span class="chip inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface px-2.5 py-1 text-sm text-ink/85">
+                      {icon && <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current opacity-75" aria-hidden="true"><path d={icon.path} /></svg>}
+                      {name}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
     </main>
@@ -331,9 +428,9 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
       <div class="grid-bg pointer-events-none absolute inset-0 rotate-180" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <h2 class="max-w-[42rem] text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
-          ¿Trabajamos juntos?
+          ¿Hablamos?
         </h2>
-        <p class="mt-5 text-lg text-muted">Disponible para incorporarme ya en Barcelona.</p>
+        <p class="mt-5 max-w-[38rem] text-lg text-muted">Para un proyecto, una duda de sistemas o backend, o si quieres comentar algo de lo que hay aquí.</p>
         <a href={`mailto:${email}`} class="mt-10 inline-block break-all text-2xl font-bold underline decoration-accent decoration-[3px] underline-offset-8 hover:text-accent sm:text-4xl">{email}</a>
         <div class="mt-8 flex gap-7">
           <a href={linkedin} target="_blank" rel="noopener" class="font-medium text-muted hover:text-ink">LinkedIn</a>
@@ -351,6 +448,13 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
       window.addEventListener('scroll', toggleIndicator, { passive: true });
       toggleIndicator();
 
+      // Vídeo del proyecto destacado: parado si se pide movimiento reducido
+      const featuredVideo = document.getElementById('featured-video');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        featuredVideo?.removeAttribute('autoplay');
+        featuredVideo?.pause();
+      }
+
       // Menú móvil
       const menuBtn = document.getElementById('menu-btn');
       const menu = document.getElementById('mobile-menu');
@@ -367,7 +471,7 @@ const liPath = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1
 
       // aria-current en la navegación según la sección visible
       const links = [...document.querySelectorAll('.nav-link')];
-      const sections = ['trabajo', 'proyectos', 'sobre-mi', 'contacto'].map((id) => document.getElementById(id)).filter(Boolean);
+      const sections = ['ahora', 'proyectos', 'itbid', 'sobre-mi', 'contacto'].map((id) => document.getElementById(id)).filter(Boolean);
       const setCurrent = (id) => links.forEach((l) => {
         if (l.getAttribute('href') === `#${id}`) l.setAttribute('aria-current', 'true');
         else l.removeAttribute('aria-current');
